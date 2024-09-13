@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Tabs with Form and Image Upload</title>
+    <link href="../src/libraries/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../src/libraries/css/bootstrap-icons-1.11.0/bootstrap-icons.min.css">
+    <link href="../src/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-4">
+    <!-- Tabs Navigation -->
+    <ul class="nav nav-tabs" id="tabList" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab1" data-bs-toggle="tab" data-bs-target="#tabPane1" type="button"
+                    role="tab" aria-controls="tabPane1" aria-selected="true" onclick="focusedTab('')">                
+                <span class="editable-title" ondblclick="makeTitleEditable(this)" onblur="updateTabTitle(this, 'tab1')" onkeydown="checkEnter(event, this)">Tab 1</span>
+                <span class="close-tab" onclick="removeTab(event, 'tab1')">&times;</span>
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" id="add-tab" type="button" onclick="addNewTab()">+</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="tabContent">
+        <!-- Tab 1 Content -->
+        <div class="tab-pane fade show active" id="tabPane1" role="tabpanel" aria-labelledby="tab1">
+            <div class="row mt-4">
+				<div class="form-group row">
+					<label for="scaleRange" class="col-sm-1 col-form-label">Size</label>
+					<div class="col-sm-2">
+						<input type="range" class="form-control-range mt-3" id="scaleRange" min="10" max="200" value="100">
+					</div>
+					<div class="col-sm-4">						
+					</div>
+					<div class="col-sm-4 pipe">
+						<a href="#"><i class="bi bi-floppy save"></i></a>
+					</div>
+				</div>
+				<input type="file" id="file-input" accept="image/*" onchange="loadImage(event)" class="file-input">
+                <!-- Left Side: Form Controls -->
+                <div class="col-md-4">                    
+					<div class="card" style="width: 300px;">
+						<div class="image-wrapper">						  
+						  <div id="image-container" class="image-container card-img-top" ondblclick="document.getElementById('file-input').click();">
+							<img id="image" class="image" draggable="false">
+						  </div>
+						</div>						
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+                </div>
+                <!-- Right Side: Image Upload -->
+                <div class="col-md-6">
+                    <form>
+					  <div class="form-group">
+						<label for="title">Title</label>
+						<input type="text" class="form-control" id="title" placeholder="Enter title">
+					  </div>
+					  <div class="form-group">
+						<label for="description">Description</label>
+						<textarea class="form-control" id="description" placeholder="Enter description" rows="3"></textarea>
+					  </div>
+					  <div class="form-group">
+						<label for="legend">Legend</label>
+						<input type="text" class="form-control" id="legend" placeholder="Enter legend">
+					  </div>
+					  <div class="form-group">
+						<input type="color" class="color-picker form-control" id="backgroundColor">
+						<label for="backgroundColor">Select Background Color</label>
+					  </div>
+					  <div class="form-group">
+						<label for="linkUrl">Link URL</label>
+						<input type="url" class="form-control" id="linkUrl" placeholder="Enter URL">
+					  </div>
+					  <div class="form-group">
+						<label for="linkName">Link Name</label>
+						<input type="text" class="form-control" id="linkName" placeholder="Enter link name">
+					  </div>
+					</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../src/libraries/js/jquery-3.5.1.slim.min.js"></script>
+<script src="../src/libraries/js/popper.min.js"></script>
+<script src="../src/libraries/js/bootstrap.min.js"></script>
+<script src="../src/libraries/js/bootstrap.bundle.min.js"></script>
+<script src="../src/js/script.js"></script>
+</body>
+</html>

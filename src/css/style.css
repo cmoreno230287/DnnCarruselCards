@@ -1,0 +1,90 @@
+/* Container for the image */
+.image-container {
+    width: 300px;
+    height: 250px;
+    min-width: 200px;
+    min-height: 200px;
+    border: 2px dashed #ccc;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  /* Uploaded image style */
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: move;
+  }
+
+  /* Hide file input */
+  .file-input {
+    display: none;
+  }
+
+  /* Color picker style */
+  .color-picker {
+    width: 30px;
+    height: 30px;
+    padding: 1px;
+    cursor: pointer;
+    border: 1px solid #000;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* Flex container for layout */
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-link {
+      position: relative;
+  }
+
+  .nav-link .close-tab {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      cursor: pointer;
+      color: #dc3545;
+      font-size: 14px;
+  }		
+
+  .editable-title {
+      border: none;
+      background: transparent;
+      width: auto;
+      display: inline;
+  }
+  
+  div.form-group {
+      margin-bottom: 20px;
+  }
+  .card{
+      border-radius: inherit;
+  }
+  .col-sm-1 {
+      width: 4%;
+  }
+  #scaleRange.mt-3{
+      margin-top: 0.8rem !important;
+  }
+  .col-sm-2.pipe .save{
+      margin-top: 0.4rem !important;
+      margin-left: 1px;
+  }
+  .col-sm-2.pipe a:link{
+      color: #888;
+  }
+  .pipe{
+      margin-top: 0.4rem;
+      text-align: right;
+      padding-right: 40px;
+  }
