@@ -76,12 +76,17 @@
   #scaleRange.mt-3{
       margin-top: 0.8rem !important;
   }
-  .col-sm-2.pipe .save{
+  .col-sm-4.pipe .icontool{
       margin-top: 0.4rem !important;
-      margin-left: 1px;
-  }
-  .col-sm-2.pipe a:link{
+      margin-left: 5px;
       color: #888;
+      font-size: larger;
+  }
+  .col-sm-4.pipe a:hover{
+    color: #000;
+  }
+  .col-sm-4.pipe a:active{
+    color: #107bb9;
   }
   .pipe{
       margin-top: 0.4rem;

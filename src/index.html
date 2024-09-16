@@ -26,7 +26,8 @@
     <div class="tab-content" id="tabContent">
         <!-- Tab 1 Content -->
         <div class="tab-pane fade show active" id="tabPane1" role="tabpanel" aria-labelledby="tab1">
-            <div class="row mt-4">
+            <div class="row mt-4">                
+                <input type="hidden" id="showcard" value="true"/>
 				<div class="form-group row">
 					<label for="scaleRange" class="col-sm-1 col-form-label">Size</label>
 					<div class="col-sm-2">
@@ -35,7 +36,8 @@
 					<div class="col-sm-4">						
 					</div>
 					<div class="col-sm-4 pipe">
-						<a href="#"><i class="bi bi-floppy save"></i></a>
+                        <a href="#" id="eyebutton" class="bi bi-eye icontool" onclick="ShowHideCard()"></a>
+						<a href="#" class="bi bi-floppy icontool"></a>
 					</div>
 				</div>
 				<input type="file" id="file-input" accept="image/*" onchange="loadImage(event)" class="file-input">
@@ -90,6 +92,7 @@
 <script src="../src/libraries/js/popper.min.js"></script>
 <script src="../src/libraries/js/bootstrap.min.js"></script>
 <script src="../src/libraries/js/bootstrap.bundle.min.js"></script>
-<script src="../src/js/script.js"></script>
+<script src="./js/templates/templates.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>

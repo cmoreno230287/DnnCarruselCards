@@ -1,7 +1,10 @@
-let tabCount = 1;
+    let tabCount = 1;
     let scale = 1;
 	var img = document.getElementById('image');
 	var imgContainer = document.getElementById('image-container');
+	var scaleRange = document.getElementById('scaleRange');
+    var eyebutton = document.getElementById('eyebutton');
+    var showcard = document.getElementById('showcard');
     let offsetX = 0;
     let offsetY = 0;
     let isDragging = false;
@@ -16,6 +19,7 @@ let tabCount = 1;
         img.style.height = '100%';
         img.style.top = '0';
         img.style.left = '0';
+        scaleRange.value = '100'
       };
       reader.readAsDataURL(event.target.files[0]);
     }
@@ -74,49 +78,10 @@ let tabCount = 1;
         newTabPane.id = tabPaneId;
         newTabPane.setAttribute('role', 'tabpanel');
         newTabPane.setAttribute('aria-labelledby', tabId);
-        newTabPane.innerHTML = `
-            <div class="row mt-4">  
-				<input type="file" id="file-input-${tabCounter}" accept="image/*" onchange="loadImage(event)"  class="file-input">
-                <div class="col-md-6">
-                    <div class="image-wrapper">
-					  <input type="range" class="form-control-range mt-3" id="scaleRange-${tabCounter}" min="10" max="200" value="100">					
-					  <div id="image-container-${tabCounter}" class="image-container" ondblclick="document.getElementById('file-input-${tabCounter}').click();">
-						<img id="image-${tabCounter}" class="image" draggable="false">
-					  </div>
-					</div>
-                </div>
-                <div class="col-md-6">
-                    <form>
-					  <div class="form-group">
-						<label for="title-${tabCounter}">Title</label>
-						<input type="text" class="form-control" id="title-${tabCounter}" placeholder="Enter title">
-					  </div>
-					  <div class="form-group">
-						<label for="description-${tabCounter}">Description</label>
-						<input type="text" class="form-control" id="description-${tabCounter}" placeholder="Enter description">
-					  </div>
-					  <div class="form-group">
-						<label for="legend-${tabCounter}">Legend</label>
-						<input type="text" class="form-control" id="legend-${tabCounter}" placeholder="Enter legend">
-					  </div>
-					  <div class="form-group">
-						<label for="backgroundColor-${tabCounter}">Select Background Color</label>
-						<input type="color" class="color-picker form-control" id="backgroundColor-${tabCounter}">
-					  </div>
-					  <div class="form-group">
-						<label for="linkUrl-${tabCounter}">Link URL</label>
-						<input type="url" class="form-control" id="linkUrl-${tabCounter}" placeholder="Enter URL">
-					  </div>
-					  <div class="form-group">
-						<label for="linkName-${tabCounter}">Link Name</label>
-						<input type="text" class="form-control" id="linkName-${tabCounter}" placeholder="Enter link name">
-					  </div>
-					</form>
-                </div>
-            </div>
-        `;
+        newTabPane.innerHTML = GetTemplate(tabCounter);
         document.getElementById('tabContent').appendChild(newTabPane);	
 		focusedTab('-' + tabCounter);
+        document.getElementById(tabId).click();
     }
 
     function removeTab(event, tabId) {
@@ -140,6 +105,9 @@ let tabCount = 1;
     function focusedTab(tabcount) {	
 		img = document.getElementById('image' + tabcount);
 		imgContainer = document.getElementById('image-container' + tabcount);
+        scaleRange = document.getElementById('scaleRange' + tabcount);
+        eyebutton = document.getElementById('eyebutton' + tabcount);
+        showcard = document.getElementById('showcard' + tabcount);
 		
 		img.addEventListener('mousedown', (event) => {
 		  isDragging = true;
@@ -191,3 +159,19 @@ let tabCount = 1;
             element.blur();  // Blur input to trigger saving title
         }
     }
+
+    function ShowHideCard(){
+        let showcardvalue = showcard.value;
+
+        if(showcardvalue == "true"){
+            showcard.value = "false";
+            eyebutton.classList.remove("bi-eye");
+            eyebutton.classList.add("bi-eye-slash")
+        }else{
+            showcard.value = "true";
+            eyebutton.classList.remove("bi-eye-slash");
+            eyebutton.classList.add("bi-eye")
+        }
+    }
+
+    
