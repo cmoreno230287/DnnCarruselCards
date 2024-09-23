@@ -111,6 +111,12 @@
       padding-right: 40px;
   }
 
+  .separatorNavItem{
+    color: #c0c0c0;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
   .readmorelink{
     margin-left: 70%;
     font-size: 10px;
@@ -118,14 +124,15 @@
     font-weight: 600;
     text-decoration: none;
   }
-
-  a.readmorelink:hover{
-    border: #ccc 1px dotted;    
-    font-size: 12px;
+  .RightColumnForm{
+    margin-left: 50px;
+  }
+  .chkShowLanguage{
+    margin-right: 10px;
   }
 
-  a.readmorelink:active{
-    border: #ccc 1px dotted;    
-    font-size: 10px;
-    
+  .eyeNavMenuItem{
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
   }

@@ -128,14 +128,14 @@ const teplateContentTab = `
                 <label class="color-picker form-control backgroundColor5" backcolor="#d9d5d1" id="backgroundColor5{tabCounter}" onclick="changeBackgroundColor(this)"></label>
                 <label class="color-picker form-control backgroundColor6" backcolor="#ebe8e5" id="backgroundColor6{tabCounter}" onclick="changeBackgroundColor(this)"></label>
             </div>
-            <!-- <div class="form-group">
-            <label for="linkUrl{tabCounter}">Link URL</label>
-            <input type="url" class="form-control" id="linkUrl{tabCounter}" placeholder="Enter URL">
+            <div class="form-group">
+                <label for="linkUrl{tabCounter}">Link URL</label>
+                <input type="url" class="form-control" id="linkUrl{tabCounter}" placeholder="Enter URL">
             </div>
             <div class="form-group">
-            <label for="linkName{tabCounter}">Link Name</label>
-            <input type="text" class="form-control" data-target-id="readmorelink{tabCounter},readmorelinkSpanish{tabCounter}" id="linkName{tabCounter}" placeholder="Enter link name" onchange="changeTextContent(this)">
-            </div>-->
+                <label for="linkName{tabCounter}">Link Name</label>
+                <input type="text" class="form-control" data-target-id="readmorelink{tabCounter},readmorelinkSpanish{tabCounter}" id="linkName{tabCounter}" placeholder="Enter link name" onchange="changeTextContent(this)">
+            </div>
         </form>
     </div>
 </div>

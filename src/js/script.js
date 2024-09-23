@@ -1,11 +1,29 @@
     let tabCount = 1;
     let scale = 1;
+// English
 	var img = document.getElementById('image');
 	var imgContainer = document.getElementById('image-container');
+	var scaleRange = document.getElementById('scaleRange');
+    
+// Spanish
 	var imgSpanish = document.getElementById('imageSpanish');
 	var imgContainerSpanish = document.getElementById('image-container-Spanish');
-	var scaleRange = document.getElementById('scaleRange');
 	var scaleRangeSpanish = document.getElementById('scaleRangeSpanish');
+
+// French
+	var imgFrench = document.getElementById('imageFrench');
+	var imgContainerFrench = document.getElementById('image-container-French');
+	var scaleRangeFrench = document.getElementById('scaleRangeFrench');
+
+// Portugues
+    var imgPortugues = document.getElementById('imagePortugues');
+    var imgContainerPortugues = document.getElementById('image-container-Portugues');
+    var scaleRangePortugues = document.getElementById('scaleRangePortugues');
+
+    document.getElementById('chkShowSpanishLanguage').checked = true;
+    document.getElementById('chkShowFrenchLanguage').checked = true;
+    document.getElementById('chkShowPortuguesLanguage').checked = true;
+
     var eyebutton = document.getElementById('eyebutton');
     var showcard = document.getElementById('showcard');
     let offsetX = 0;
@@ -57,23 +75,27 @@
             isDragging = false;
         });
     }
+
     addEventsImages(img, imgContainer);
-    addEventsImages(imgSpanish, imgContainerSpanish);    
+    addEventsImages(imgSpanish, imgContainerSpanish); 
+    addEventsImages(imgFrench, imgContainerFrench);  
+    addEventsImages(imgPortugues, imgContainerPortugues);    
 
     // Scaling functionality with range input
-    document.getElementById('scaleRange').addEventListener('input', (event) => {
-      const scale = event.target.value / 100;
-      let img = document.getElementById(event.target.getAttribute("data-target-id"));
-      img.style.width = (scale * 100) + '%';
-      img.style.height = (scale * 100) + '%';
-    });
+    AddEventsRangeControls(scaleRange.id, '');
+    AddEventsRangeControls(scaleRangeSpanish.id, '');
+    AddEventsRangeControls(scaleRangeFrench.id, '');
+    AddEventsRangeControls(scaleRangePortugues.id, '');
 
-    document.getElementById('scaleRangeSpanish').addEventListener('input', (event) => {
-      const scale = event.target.value / 100;
-      let img = document.getElementById(event.target.getAttribute("data-target-id"));
-      img.style.width = (scale * 100) + '%';
-      img.style.height = (scale * 100) + '%';
-    });
+    function AddEventsRangeControls(rangeControlId, tabcount){
+		document.getElementById(rangeControlId + tabcount).addEventListener('input', (event) => {
+            const scale = event.target.value / 100;
+            let img = document.getElementById(event.target.getAttribute("data-target-id"));
+            img.style.width = (scale * 100) + '%';
+            img.style.height = (scale * 100) + '%';
+        });
+    }
+
 	function validateAddTab(){     
         if(tabCount >= MAX_NUMBER_TABS) {
             document.getElementById("add-tab").style.display = "none"
@@ -82,6 +104,7 @@
             document.getElementById("add-tab").style.display = "block"
         }
     }
+
     function addNewTab() {
         let tabCounter = (tabCount++);
         const tabId = 'tab' + tabCount;
@@ -109,6 +132,7 @@
         document.getElementById('tabContent').appendChild(newTabPane);	
 		focusedTab('-' + tabCounter);
         document.getElementById(tabId).click();        
+        changeLinkUrl(this, '')
         validateAddTab();
     }
 
@@ -137,29 +161,16 @@
 		imageSpanish = document.getElementById('imageSpanish' + tabcount);
 		imgContainer = document.getElementById('image-container' + tabcount);
 		imgContainerSpanish = document.getElementById('image-container-Spanish' + tabcount);
-        scaleRange = document.getElementById('scaleRange' + tabcount);
-        scaleRangeSpanish = document.getElementById('scaleRangeSpanish' + tabcount);
         eyebutton = document.getElementById('eyebutton' + tabcount);
         showcard = document.getElementById('showcard' + tabcount);
         
         addEventsImages(img, imgContainer);
         addEventsImages(imageSpanish, imgContainerSpanish);
+        addEventsImages(imgFrench, imgContainerFrench);
 
-		// Scaling functionality with range input
-		document.getElementById('scaleRange' + tabcount).addEventListener('input', (event) => {
-		  const scale = event.target.value / 100;
-          let img = document.getElementById(event.target.getAttribute("data-target-id"));
-		  img.style.width = (scale * 100) + '%';
-		  img.style.height = (scale * 100) + '%';
-		});
-
-		// Scaling functionality with range input
-		document.getElementById('scaleRangeSpanish' + tabcount).addEventListener('input', (event) => {
-		  const scale = event.target.value / 100;          
-          let img = document.getElementById(event.target.getAttribute("data-target-id"));
-		  img.style.width = (scale * 100) + '%';
-		  img.style.height = (scale * 100) + '%';
-		});
+        AddEventsRangeControls(scaleRange.id, tabcount)
+        AddEventsRangeControls(scaleRangeSpanish.id, tabcount)
+        AddEventsRangeControls(scaleRangeFrench.id, tabcount)
         previustabFocusedId = tabcount;
     }	
 
@@ -213,6 +224,30 @@
             let cardtitle = document.getElementById(el);
             cardtitle.innerText = element.value;
         });
+    }
+    
+    function setLinkText(element, tabcount){   
+        let readmorelinkId = element.getAttribute("data-target-id");
+        let readmorelink = document.getElementById(readmorelinkId);
+        readmorelink.innerText = element.value;
+    }
+
+    function setLinkUrl(element, tabcount){   
+        let readmorelinkId = element.getAttribute("data-target-id");
+        let readmorelink = document.getElementById(readmorelinkId);
+        readmorelink.setAttribute("href", element.value);
+    }
+
+    function ShowCardLangage(element){
+        let checked = element.checked;
+        let targetElementId = element.getAttribute("data-target-id");
+        let targetElement = document.getElementById(targetElementId);
+
+        if(checked){
+            targetElement.style.display = "block";
+        }else{
+            targetElement.style.display = "none";
+        }
     }
 
     function changeLinkUrl(element, tabcount){        
