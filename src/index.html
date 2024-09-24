@@ -9,15 +9,18 @@
     <link href="../src/css/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="container my-4">
+<div class="container my-4" id="main-container">
     <!-- Tabs Navigation -->
     <div class="form-group row">
-        <div class="col-sm-11">
+        <div class="col-sm-12 textalignEnd">
             <label for="tipoSeccion">Tipo de Seccion:</label>
-            <select id="tipoSeccion">
-                <option value="">Ninguno</option>
-                <option value="">Noticias</option>
-                <option value="">Eventos</option>
+            <select id="tipoSeccion" onchange="SetSectionStyle()">
+                <option value="sel">Seleccionar</option>
+                <option value="3des">3 Destacados</option>
+                <option value="eve">Eventos</option>
+                <option value="not">Noticias</option>
+                <option value="2des">2 Destacados</option>
+                <option value="2des">Carrusel</option>
             </select>
         </div>
     </div>
@@ -43,20 +46,17 @@
 					<div class="col-sm-1">
 					</div>
 					<div class="col-sm-10 pipe">  
-                        <label for="backgroundColor">Background Color</label>
-                        <label class="color-picker form-control backgroundColor1" backcolor="#ffffff" id="backgroundColor1" onclick="changeBackgroundColor(this)"></label>
-                        <label class="color-picker form-control backgroundColor2" backcolor="#f0f0f0" id="backgroundColor2" onclick="changeBackgroundColor(this)"></label>
-                        <label class="color-picker form-control backgroundColor3" backcolor="#6287BA" id="backgroundColor3" onclick="changeBackgroundColor(this)"></label>
-                        <label class="color-picker form-control backgroundColor4" backcolor="#707B89" id="backgroundColor4" onclick="changeBackgroundColor(this)"></label>
-                        <label class="color-picker form-control backgroundColor5" backcolor="#d9d5d1" id="backgroundColor5" onclick="changeBackgroundColor(this)"></label>
-                        <label class="color-picker form-control backgroundColor6" backcolor="#ebe8e5" id="backgroundColor6" onclick="changeBackgroundColor(this)"></label>
+                        <label for="backgroundColor">Compartir Imagen</label>
+                        <input type="checkbox" class="chkShowLanguage" name="compartirImagen" id="compartirImagen"></input>	
                         <span class="separatorNavItem">|</span>
+                        <label for="chkShowEnglishLanguage">English</label>
+                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliEnglish" data-target-contenttab-id="tabPaneEnglish" name="English" id="chkShowEnglishLanguage" onchange="ShowCardLangage(this)"></input>	
                         <label for="chkShowSpanishLanguage">Spanish</label>
-                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliSpanish" name="Spanish" id="chkShowSpanishLanguage" onchange="ShowCardLangage(this)"></input>	
+                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliSpanish" data-target-contenttab-id="tabPaneSpanish" name="Spanish" id="chkShowSpanishLanguage" onchange="ShowCardLangage(this)"></input>	
                         <label for="chkShowFrenchLanguage">French</label>
-                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliFrench" name="French" id="chkShowFrenchLanguage" onchange="ShowCardLangage(this)"></input>		
+                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliFrench" data-target-contenttab-id="tabPaneFrench" name="French" id="chkShowFrenchLanguage" onchange="ShowCardLangage(this)"></input>		
                         <label for="chkShowPortuguesLanguage">Portugues</label>
-                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliPortugues" name="Portugues" id="chkShowPortuguesLanguage" onchange="ShowCardLangage(this)"></input>					
+                        <input type="checkbox" class="chkShowLanguage" data-target-id="tabliPortugues" data-target-contenttab-id="tabPanePortugues" name="Portugues" id="chkShowPortuguesLanguage" onchange="ShowCardLangage(this)"></input>					
                         <span class="separatorNavItem">|</span><a href="#" id="eyebutton" class="bi bi-eye eyeNavMenuItem" onclick="ShowHideCard()"></a>
 						<span class="separatorNavItem">|</span><a href="#" class="bi bi-floppy eyeNavMenuItem"></a>
 					</div>
@@ -119,15 +119,15 @@
                                     <form>
                                       <div class="form-group">
                                         <label for="title">Title</label>
-                                        <input type="text" class="form-control" id="title" data-target-id="cardtitle" onchange="changeTextContent(this)" placeholder="Enter title">
+                                        <input type="text" class="form-control" id="title" role="title" data-target-id="cardtitle" onchange="changeTextContent(this)" placeholder="Enter title">
                                       </div>
                                       <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea class="form-control" id="description" data-target-id="cardText" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                       </div>
-                                      <div class="form-group">
+                                      <div class="form-group" control-role="legend">
                                         <label for="legend">Legend</label>
-                                        <input type="text" class="form-control" id="legend" placeholder="Enter legend">
+                                        <input type="text" class="form-control" id="legend" placeholder="Enter legend" hide-for-section-type="3des">
                                       </div>
                                       <div class="form-group">
                                         <label for="linkUrl">Link URL</label>
@@ -171,7 +171,7 @@
                                             <label for="descriptionSpanish">Description</label>
                                             <textarea class="form-control" id="descriptionSpanish" data-target-id="cardTextSpanish" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" control-role="legend">
                                             <label for="legend">Legend</label>
                                             <input type="text" class="form-control" id="legendSpanish" placeholder="Enter legend">
                                         </div>
@@ -217,7 +217,7 @@
                                             <label for="descriptionFrench">Description</label>
                                             <textarea class="form-control" id="descriptionFrench" data-target-id="cardTextFrench" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" control-role="legend">
                                             <label for="legend">Legend</label>
                                             <input type="text" class="form-control" id="legendFrench" placeholder="Enter legend">
                                         </div>
@@ -263,7 +263,7 @@
                                             <label for="descriptionPortugues">Description</label>
                                             <textarea class="form-control" id="descriptionPortugues" data-target-id="cardTextPortugues" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" control-role="legend">
                                             <label for="legend">Legend</label>
                                             <input type="text" class="form-control" id="legendPortugues" placeholder="Enter legend">
                                         </div>

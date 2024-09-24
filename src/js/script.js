@@ -1,5 +1,6 @@
     let tabCount = 1;
     let scale = 1;
+    let cardBackgroundColor = "#ffffff";
 // English
 	var img = document.getElementById('image');
 	var imgContainer = document.getElementById('image-container');
@@ -20,6 +21,7 @@
     var imgContainerPortugues = document.getElementById('image-container-Portugues');
     var scaleRangePortugues = document.getElementById('scaleRangePortugues');
 
+    document.getElementById('chkShowEnglishLanguage').checked = true;
     document.getElementById('chkShowSpanishLanguage').checked = true;
     document.getElementById('chkShowFrenchLanguage').checked = true;
     document.getElementById('chkShowPortuguesLanguage').checked = true;
@@ -39,14 +41,24 @@
       let img  = document.getElementById(imgId);
       let scaleRange  = document.getElementById(scaleId);
       reader.onload = function() {
+        let compartirImagen = document.getElementById("compartirImagen");
+        setImageProperties(img, scaleRange, reader);
+        if(compartirImagen.checked){
+            setImageProperties(imgSpanish, scaleRangeSpanish, reader);
+            setImageProperties(imgFrench, imgContainerFrench, reader);
+            setImageProperties(imgPortugues, imgContainerPortugues, reader);
+        }
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function setImageProperties(img, scaleRange, reader){
         img.src = reader.result;
         img.style.width = '100%';  // reset to original scale
         img.style.height = '100%';
         img.style.top = '0';
         img.style.left = '0';
         scaleRange.value = '100'
-      };
-      reader.readAsDataURL(event.target.files[0]);
     }
 
     function addEventsImages(img, imgContainer){
@@ -132,7 +144,8 @@
         document.getElementById('tabContent').appendChild(newTabPane);	
 		focusedTab('-' + tabCounter);
         document.getElementById(tabId).click();        
-        changeLinkUrl(this, '')
+        changeLinkUrl(this, '');
+        setCardsBackgroundColor();
         validateAddTab();
     }
 
@@ -160,17 +173,24 @@
 		img = document.getElementById('image' + tabcount);
 		imageSpanish = document.getElementById('imageSpanish' + tabcount);
 		imgContainer = document.getElementById('image-container' + tabcount);
-		imgContainerSpanish = document.getElementById('image-container-Spanish' + tabcount);
+		imgContainerSpanish = document.getElementById('image-container-Spanish' + tabcount);        
+	    imgFrench = document.getElementById('imageFrench' + tabcount);
+	    imgContainerFrench = document.getElementById('image-container-French' + tabcount);
+        imgPortugues = document.getElementById('imagePortugues');
+        imgContainerPortugues = document.getElementById('image-container-Portugues');
+
         eyebutton = document.getElementById('eyebutton' + tabcount);
         showcard = document.getElementById('showcard' + tabcount);
         
         addEventsImages(img, imgContainer);
         addEventsImages(imageSpanish, imgContainerSpanish);
         addEventsImages(imgFrench, imgContainerFrench);
+        addEventsImages(imgPortugues, imgContainerPortugues);
 
         AddEventsRangeControls(scaleRange.id, tabcount)
         AddEventsRangeControls(scaleRangeSpanish.id, tabcount)
         AddEventsRangeControls(scaleRangeFrench.id, tabcount)
+        AddEventsRangeControls(scaleRangePortugues.id, tabcount)
         previustabFocusedId = tabcount;
     }	
 
@@ -241,13 +261,107 @@
     function ShowCardLangage(element){
         let checked = element.checked;
         let targetElementId = element.getAttribute("data-target-id");
+        let targetElementTabContentId = element.getAttribute("data-target-contenttab-id");
         let targetElement = document.getElementById(targetElementId);
+        let targetElementTabContent = document.getElementById(targetElementTabContentId);
 
         if(checked){
             targetElement.style.display = "block";
+            //targetElementTabContent.style.display = "block";
         }else{
             targetElement.style.display = "none";
+            //targetElementTabContent.style.display = "none";
         }
+    }
+
+    function SetSectionStyle(){
+        var tipoSeccion = document.getElementById("tipoSeccion");
+        var elements = document.querySelectorAll('[control-role="legend"]');        
+        DiabledEnableContainer("main-container", false, "");
+
+        switch(tipoSeccion.value){
+            case "3des" : 
+                elements.forEach((element) => { 
+                    element.style.display = "none";
+                });
+                this.cardBackgroundColor = "#f0f0f0";
+                setCardsBackgroundColor();
+                setMaxLengthTitleAndText(217, 64);
+                break;
+            case "2des" : 
+                elements.forEach((element) => { 
+                    element.style.display = "none";
+                });
+                this.cardBackgroundColor = "#f0f0f0";
+                setCardsBackgroundColor();
+                setMaxLengthTitleAndText(217, 64);
+                break;
+            case "eve":
+                elements.forEach((element) => { 
+                    element.style.display = "block";
+                });
+                this.cardBackgroundColor = "#ffffff";
+                setCardsBackgroundColor();
+                setMaxLengthTitleAndText(155, 53);
+                break;
+            case "not":
+                elements.forEach((element) => { 
+                    element.style.display = "block";
+                });
+                this.cardBackgroundColor = "#f0f0f0";
+                setCardsBackgroundColor();
+                setMaxLengthTitleAndText(350, 64);
+                break;
+            case "sel":
+                DiabledEnableContainer("main-container", true, ["tipoSeccion"]);
+                break;
+        }
+    }
+
+    function DiabledEnableContainer(containerId, disabledValue, exceptionControlsIds){
+        document.getElementById(containerId).disabled = disabledValue;
+        var nodes = document.getElementById(containerId).getElementsByTagName('*');
+        var links = document.querySelectorAll('a');        
+        let options = document.querySelectorAll('#tipoSeccion option');
+        
+        for(var i = 0; i < nodes.length; i++){
+            nodes[i].disabled = disabledValue;
+        }
+
+        for(var i1 = 0; i1 < exceptionControlsIds.length; i1++){
+            let sectionType = document.getElementById(exceptionControlsIds[i1]);
+            sectionType.disabled = !disabledValue;
+        }
+
+        if(exceptionControlsIds.length > 0){
+            for(var i3 = 0; i3 < options.length; i3++){
+                options[i3].disabled = !disabledValue;
+            }
+        }
+        
+        /* for(var i2 = 0; i2 < links.length; i2++){
+            links[i2].style.visibility = disabledValue ? "visible" : "hidden";
+        } */
+    }
+
+    function setMaxLengthTitleAndText(textareMaxLength, inputTitleMaxLength){
+        let textareaList = document.querySelectorAll('textarea');
+        let inputTitleList = document.querySelectorAll('input[role=title]');
+        
+        for(var i = 0; i < textareaList.length; i++){
+            textareaList[i].maxLength = textareMaxLength;
+        }
+        
+        for(var i2 = 0; i2 < inputTitleList.length; i2++){
+            inputTitleList[i2].maxLength = inputTitleMaxLength;
+        }
+    }
+
+    function setCardsBackgroundColor(){
+        var elements = document.querySelectorAll('div.card');
+        elements.forEach((element) => { 
+            element.style.backgroundColor = this.cardBackgroundColor;
+        });
     }
 
     function changeLinkUrl(element, tabcount){        
