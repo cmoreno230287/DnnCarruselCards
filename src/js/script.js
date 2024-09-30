@@ -1,6 +1,8 @@
     let tabCount = 1;
     let scale = 1;
     let cardBackgroundColor = "#ffffff";
+    const MAX_NUMBER_TABS = 40;
+    const WIDTH_PRINCIPAL_CONTAINER = 1332;
 // English
 	var img = document.getElementById('image');
 	var imgContainer = document.getElementById('image-container');
@@ -33,18 +35,31 @@
     let isDragging = false;
     let dragOffsetX = 0, dragOffsetY = 0;
     let previustabFocusedId = "tab1";
-    const MAX_NUMBER_TABS = 10;
+    var sortable = null;
+
+    addEventsImages(img, imgContainer);
+    addEventsImages(imgSpanish, imgContainerSpanish); 
+    addEventsImages(imgFrench, imgContainerFrench);  
+    addEventsImages(imgPortugues, imgContainerPortugues);    
+
+    // Scaling functionality with range input
+    AddEventsRangeControls(scaleRange.id, '');
+    AddEventsRangeControls(scaleRangeSpanish.id, '');
+    AddEventsRangeControls(scaleRangeFrench.id, '');
+    AddEventsRangeControls(scaleRangePortugues.id, '');
+    
+    SetSectionStyle();
 
 	// Load the selected image into the container
-    function loadImage(event, imgId, scaleId) {
+    function loadImage(event, imgId, scaleId, tabcount) {
       const reader = new FileReader();	 
       let img  = document.getElementById(imgId);
       let scaleRange  = document.getElementById(scaleId);
       reader.onload = function() {
-        let compartirImagen = document.getElementById("compartirImagen");
+        let compartirImagen = document.getElementById("compartirImagen" + tabcount);
         setImageProperties(img, scaleRange, reader);
         if(compartirImagen.checked){
-            setImageProperties(imgSpanish, scaleRangeSpanish, reader);
+            setImageProperties(imgSpanish, imgContainerSpanish, reader);
             setImageProperties(imgFrench, imgContainerFrench, reader);
             setImageProperties(imgPortugues, imgContainerPortugues, reader);
         }
@@ -87,17 +102,6 @@
             isDragging = false;
         });
     }
-
-    addEventsImages(img, imgContainer);
-    addEventsImages(imgSpanish, imgContainerSpanish); 
-    addEventsImages(imgFrench, imgContainerFrench);  
-    addEventsImages(imgPortugues, imgContainerPortugues);    
-
-    // Scaling functionality with range input
-    AddEventsRangeControls(scaleRange.id, '');
-    AddEventsRangeControls(scaleRangeSpanish.id, '');
-    AddEventsRangeControls(scaleRangeFrench.id, '');
-    AddEventsRangeControls(scaleRangePortugues.id, '');
 
     function AddEventsRangeControls(rangeControlId, tabcount){
 		document.getElementById(rangeControlId + tabcount).addEventListener('input', (event) => {
@@ -144,9 +148,11 @@
         document.getElementById('tabContent').appendChild(newTabPane);	
 		focusedTab('-' + tabCounter);
         document.getElementById(tabId).click();        
-        changeLinkUrl(this, '');
+        //changeLinkUrl(this, '');
         setCardsBackgroundColor();
         validateAddTab();
+        SetSectionStyle();
+        TabSortable("");
     }
 
     function removeTab(event, tabId) {
@@ -171,19 +177,19 @@
 
     function focusedTab(tabcount) {	
 		img = document.getElementById('image' + tabcount);
-		imageSpanish = document.getElementById('imageSpanish' + tabcount);
 		imgContainer = document.getElementById('image-container' + tabcount);
+		imgSpanish = document.getElementById('imageSpanish' + tabcount);
 		imgContainerSpanish = document.getElementById('image-container-Spanish' + tabcount);        
 	    imgFrench = document.getElementById('imageFrench' + tabcount);
 	    imgContainerFrench = document.getElementById('image-container-French' + tabcount);
-        imgPortugues = document.getElementById('imagePortugues');
-        imgContainerPortugues = document.getElementById('image-container-Portugues');
+        imgPortugues = document.getElementById('imagePortugues' + tabcount);
+        imgContainerPortugues = document.getElementById('image-container-Portugues' + tabcount);
 
         eyebutton = document.getElementById('eyebutton' + tabcount);
         showcard = document.getElementById('showcard' + tabcount);
         
         addEventsImages(img, imgContainer);
-        addEventsImages(imageSpanish, imgContainerSpanish);
+        addEventsImages(imgSpanish, imgContainerSpanish);
         addEventsImages(imgFrench, imgContainerFrench);
         addEventsImages(imgPortugues, imgContainerPortugues);
 
@@ -287,6 +293,7 @@
                 this.cardBackgroundColor = "#f0f0f0";
                 setCardsBackgroundColor();
                 setMaxLengthTitleAndText(217, 64);
+                setCardsWidth("332px", "400px", "50%", "50%");
                 break;
             case "2des" : 
                 elements.forEach((element) => { 
@@ -295,6 +302,7 @@
                 this.cardBackgroundColor = "#f0f0f0";
                 setCardsBackgroundColor();
                 setMaxLengthTitleAndText(217, 64);
+                setCardsWidth("506px", "395px", "65%", "35%");
                 break;
             case "eve":
                 elements.forEach((element) => { 
@@ -303,6 +311,7 @@
                 this.cardBackgroundColor = "#ffffff";
                 setCardsBackgroundColor();
                 setMaxLengthTitleAndText(155, 53);
+                setCardsWidth("243px", "400px", "40%", "60%");
                 break;
             case "not":
                 elements.forEach((element) => { 
@@ -311,9 +320,11 @@
                 this.cardBackgroundColor = "#f0f0f0";
                 setCardsBackgroundColor();
                 setMaxLengthTitleAndText(350, 64);
+                setCardsWidth("243px", "400px", "40%", "60%");
                 break;
             case "sel":
                 DiabledEnableContainer("main-container", true, ["tipoSeccion"]);
+                setCardsWidth("332px", "400px", "50%", "50%");
                 break;
         }
     }
@@ -338,10 +349,6 @@
                 options[i3].disabled = !disabledValue;
             }
         }
-        
-        /* for(var i2 = 0; i2 < links.length; i2++){
-            links[i2].style.visibility = disabledValue ? "visible" : "hidden";
-        } */
     }
 
     function setMaxLengthTitleAndText(textareMaxLength, inputTitleMaxLength){
@@ -364,18 +371,44 @@
         });
     }
 
-    function changeLinkUrl(element, tabcount){        
-        document.getElementById('cardlink' + tabcount).setAttribute("data-target-id", element.id);
-        document.getElementById('linkName' + tabcount).value = element.innerText;
-        document.getElementById('linkUrl' + tabcount).value = element.getAttribute("href");
+    function setCardsWidth(cardWidth, cardHeigh, imageHeigh, bodyTextHeigh){
+        var elements = document.querySelectorAll('div.card');
+        var elementsImage = document.querySelectorAll('div.card div.image-wrapper');
+        var elementsBody = document.querySelectorAll('div.card div.card-body');
+        elements.forEach((element) => { 
+            element.style.width = cardWidth;
+            element.style.height = cardHeigh;
+        });
+        
+        elementsImage.forEach((element) => { 
+            element.style.height = imageHeigh;
+        });
+        
+        elementsBody.forEach((element) => { 
+            element.style.height = bodyTextHeigh;
+        });
     }
 
-    function submitLink(tabcount) {
-        let readmorelinkId = document.getElementById('cardlink' + tabcount).getAttribute("data-target-id");
-        let readmorelink = document.getElementById(readmorelinkId);
-        readmorelink.innerText = document.getElementById('linkName' + tabcount).value;
-        readmorelink.setAttribute("href", document.getElementById('linkUrl' + tabcount).value); 
-        document.getElementById('hiddenButtonModal' + tabcount).click();
+    function TabSortable(tabcount){
+        sortable = new Sortable(document.getElementById('tabList'), {
+            animation: 150,  // Animation speed during sorting
+            onEnd: function(evt) {
+                // After sorting, rearrange the tab content based on the new tab order
+                var tabs = document.querySelectorAll('#tabList .nav-link');
+                var tabContent = document.querySelectorAll('.tab-pane');
+                
+                var tabContainer = document.getElementById('tabContent');
+                //tabContainer.innerHTML = ''; // Clear existing tab content
+    
+                tabs.forEach(function(tab) {
+                    if(tab.id != "add-tab") {
+                        var targetId = tab.getAttribute('data-bs-target').replace("#", ""); // Get the tab's target ID
+                        var tabPane = document.getElementById(targetId + tabcount); // Find the corresponding content by ID
+                        tabContainer.appendChild(tabPane); // Append the tab content in the new order
+                    }
+                });
+            }
+        });
     }
 
     

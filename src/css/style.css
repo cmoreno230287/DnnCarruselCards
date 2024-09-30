@@ -1,9 +1,11 @@
+#main-container{
+  font-family: system-ui;
+}
+
 /* Container for the image */
 .image-container {
-    width: 300px;
-    height: 250px;
-    min-width: 200px;
-    min-height: 200px;
+    width: 100%;
+    height: 100%;
     border: 2px dashed #ccc;
     position: relative;
     overflow: hidden;
@@ -59,6 +61,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   
   .nav-link {
@@ -86,6 +89,18 @@
   }
   .card{
       border-radius: inherit;
+      width: 335px;
+      padding-left: 0px;
+      padding-right: 0px;
+  }
+
+  .card .card-title{
+      font-size: 16px;
+      font-weight: bold;
+  }
+
+  .card .card-text{
+      font-size: 13px;
   }
   .col-sm-1 {
       width: 4%;
@@ -118,14 +133,15 @@
   }
 
   .readmorelink{
-    margin-left: 70%;
-    font-size: 10px;
+    font-size: 12px;
     color: #306EA9 !important;
-    font-weight: 600;
+    font-weight: bold;
     text-decoration: none;
+    float: inline-end;
   }
   .RightColumnForm{
     margin-left: 50px;
+    width: 45%;
   }
   .chkShowLanguage{
     margin-right: 10px;
@@ -139,4 +155,9 @@
 
   .textalignEnd{
     text-align: end;
+  }
+
+  .inputSectionTitle{
+    width: 250px;
+    display: inline;
   }

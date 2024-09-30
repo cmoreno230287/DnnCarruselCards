@@ -12,7 +12,15 @@
 <div class="container my-4" id="main-container">
     <!-- Tabs Navigation -->
     <div class="form-group row">
-        <div class="col-sm-12 textalignEnd">
+        <div class="col-sm-5">
+            <label for="sectionTitle">Titulo de la Seccion:</label>            
+            <input type="text" class="form-control inputSectionTitle" id="sectionTitle" placeholder="Enter title section">
+        </div>
+        <div class="col-sm-3">
+            <label for="ButtonShowMore">Mostrar boton ver mas</label>
+            <input type="checkbox" name="ButtonShowMore" id="ButtonShowMore"></input>	
+        </div>
+        <div class="col-sm-4 textalignEnd">
             <label for="tipoSeccion">Tipo de Seccion:</label>
             <select id="tipoSeccion" onchange="SetSectionStyle()">
                 <option value="sel">Seleccionar</option>
@@ -46,7 +54,7 @@
 					<div class="col-sm-1">
 					</div>
 					<div class="col-sm-10 pipe">  
-                        <label for="backgroundColor">Compartir Imagen</label>
+                        <label for="compartirImagen">Compartir Imagen</label>
                         <input type="checkbox" class="chkShowLanguage" name="compartirImagen" id="compartirImagen"></input>	
                         <span class="separatorNavItem">|</span>
                         <label for="chkShowEnglishLanguage">English</label>
@@ -61,10 +69,10 @@
 						<span class="separatorNavItem">|</span><a href="#" class="bi bi-floppy eyeNavMenuItem"></a>
 					</div>
 				</div>
-				<input type="file" id="file-input" accept="image/*" onchange="loadImage(event, 'image', 'scaleRange')" class="file-input">
-				<input type="file" id="file-input-Spanish" accept="image/*" onchange="loadImage(event, 'imageSpanish', 'scaleRangeSpanish')" class="file-input">
-				<input type="file" id="file-input-French" accept="image/*" onchange="loadImage(event, 'imageFrench', 'scaleRangeFrench')" class="file-input">
-				<input type="file" id="file-input-Portugues" accept="image/*" onchange="loadImage(event, 'imagePortugues', 'scaleRangePortugues')" class="file-input">
+				<input type="file" id="file-input" accept="image/*" onchange="loadImage(event, 'image', 'scaleRange', '')" class="file-input">
+				<input type="file" id="file-input-Spanish" accept="image/*" onchange="loadImage(event, 'imageSpanish', 'scaleRangeSpanish', '')" class="file-input">
+				<input type="file" id="file-input-French" accept="image/*" onchange="loadImage(event, 'imageFrench', 'scaleRangeFrench', '')" class="file-input">
+				<input type="file" id="file-input-Portugues" accept="image/*" onchange="loadImage(event, 'imagePortugues', 'scaleRangePortugues', '')" class="file-input">
                 <!-- Left Side: Form Controls -->
                 <div class="col-md-10">     
                     <ul class="nav nav-tabs" id="tabListLanguagesImages" role="tablist">
@@ -103,15 +111,15 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
-                                <div class="card col-md-4" style="width: 300px;">
+                                <div class="card col-md-4">
                                     <div class="image-wrapper">						  
                                     <div id="image-container" class="image-container card-img-top" ondblclick="document.getElementById('file-input').click();">
                                         <img id="image" class="image" draggable="false">
                                     </div>
                                     </div>						
                                     <div class="card-body">
-                                        <h5 class="card-title" id="cardtitle">Card title</h5>
-                                        <p class="card-text" id="cardText">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h5 class="card-title" id="cardtitle">Lorem ipsum dolor sit amet, consectetuer ipsum dolor</h5>
+                                        <p class="card-text" id="cardText">The Organization of American States is the oldest regional organization in the world. The origin of the Organization of American States (OAS).</p>
                                         <a href="#" class="readmorelink" id="readmorelink">read more</span></a>
                                     </div>
                                 </div>
@@ -130,12 +138,12 @@
                                         <input type="text" class="form-control" id="legend" placeholder="Enter legend" hide-for-section-type="3des">
                                       </div>
                                       <div class="form-group">
-                                        <label for="linkUrl">Link URL</label>
-                                        <input type="url" class="form-control" data-target-id="readmorelink" id="linkUrl" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
-                                      </div>
-                                      <div class="form-group">
                                         <label for="linkName">Link Name</label>
                                         <input type="text" class="form-control" data-target-id="readmorelink" id="linkName" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="linkUrl">Link URL</label>
+                                        <input type="url" class="form-control" data-target-id="readmorelink" id="linkUrl" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
                                       </div>
                                     </form>
                                 </div>
@@ -149,15 +157,15 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
-                                <div class="card col-md-4" style="width: 300px;">
+                                <div class="card col-md-4">
                                     <div class="image-wrapper">						  
                                     <div id="image-container-Spanish" class="image-container card-img-top" ondblclick="document.getElementById('file-input-Spanish').click();">
                                         <img id="imageSpanish" class="image" draggable="false">
                                     </div>
                                     </div>						
                                     <div class="card-body">
-                                        <h5 class="card-title" id="cardtitleSpanish">Card title</h5>
-                                        <p class="card-text" id="cardTextSpanish">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h5 class="card-title" id="cardtitleSpanish">Lorem ipsum dolor sit amet, consectetuer ipsum dolor</h5>
+                                        <p class="card-text" id="cardTextSpanish">The Organization of American States is the oldest regional organization in the world. The origin of the Organization of American States (OAS).</p>
                                         <a href="#" class="readmorelink" id="readmorelinkSpanish">read more</a>
                                     </div>
                                 </div>
@@ -195,15 +203,15 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
-                                <div class="card col-md-4" style="width: 300px;">
+                                <div class="card col-md-4">
                                     <div class="image-wrapper">						  
                                         <div id="image-container-French" class="image-container card-img-top" ondblclick="document.getElementById('file-input-French').click();">
                                             <img id="imageFrench" class="image" draggable="false">
                                         </div>
                                     </div>						
                                     <div class="card-body">
-                                        <h5 class="card-title" id="cardtitleFrench">Card title</h5>
-                                        <p class="card-text" id="cardTextFrench">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h5 class="card-title" id="cardtitleFrench">Lorem ipsum dolor sit amet, consectetuer ipsum dolor</h5>
+                                        <p class="card-text" id="cardTextFrench">The Organization of American States is the oldest regional organization in the world. The origin of the Organization of American States (OAS).</p>
                                         <a href="#" class="readmorelink" id="readmorelinkFrench">read more</a>
                                     </div>
                                 </div>
@@ -241,15 +249,15 @@
                                 </div>
                             </div>
                             <div class="row mt-4">
-                                <div class="card col-md-4" style="width: 300px;">
+                                <div class="card col-md-4">
                                     <div class="image-wrapper">						  
                                         <div id="image-container-Portugues" class="image-container card-img-top" ondblclick="document.getElementById('file-input-Portugues').click();">
                                             <img id="imagePortugues" class="image" draggable="false">
                                         </div>
                                     </div>						
                                     <div class="card-body">
-                                        <h5 class="card-title" id="cardtitlePortugues">Card title</h5>
-                                        <p class="card-text" id="cardTextPortugues">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <h5 class="card-title" id="cardtitlePortugues">Lorem ipsum dolor sit amet, consectetuer ipsum dolor</h5>
+                                        <p class="card-text" id="cardTextPortugues">The Organization of American States is the oldest regional organization in the world. The origin of the Organization of American States (OAS).</p>
                                         <a href="#" class="readmorelink" id="readmorelinkPortugues">read more</a>
                                     </div>
                                 </div>
@@ -289,6 +297,7 @@
 <script src="../src/libraries/js/popper.min.js"></script>
 <script src="../src/libraries/js/bootstrap.min.js"></script>
 <script src="../src/libraries/js/bootstrap.bundle.min.js"></script>
+<script src="../src/libraries/js/Sortable.min.js"></script>
 <script src="./js/templates/templates.js"></script>
 <script src="./js/script.js"></script>
 </body>
