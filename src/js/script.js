@@ -23,11 +23,6 @@
     var imgContainerPortugues = document.getElementById('image-container-Portugues');
     var scaleRangePortugues = document.getElementById('scaleRangePortugues');
 
-    document.getElementById('chkShowEnglishLanguage').checked = true;
-    document.getElementById('chkShowSpanishLanguage').checked = true;
-    document.getElementById('chkShowFrenchLanguage').checked = true;
-    document.getElementById('chkShowPortuguesLanguage').checked = true;
-
     var eyebutton = document.getElementById('eyebutton');
     var showcard = document.getElementById('showcard');
     let offsetX = 0;
@@ -36,6 +31,8 @@
     let dragOffsetX = 0, dragOffsetY = 0;
     let previustabFocusedId = "tab1";
     var sortable = null;
+    
+    ShowAllLanguageTabs("");
 
     addEventsImages(img, imgContainer);
     addEventsImages(imgSpanish, imgContainerSpanish); 
@@ -153,6 +150,7 @@
         validateAddTab();
         SetSectionStyle();
         TabSortable("");
+        ShowAllLanguageTabs('-' + tabCounter);
     }
 
     function removeTab(event, tabId) {
@@ -387,6 +385,13 @@
         elementsBody.forEach((element) => { 
             element.style.height = bodyTextHeigh;
         });
+    }
+
+    function ShowAllLanguageTabs(tabcount){
+        document.getElementById('chkShowEnglishLanguage' + tabcount).checked = true;
+        document.getElementById('chkShowSpanishLanguage' + tabcount).checked = true;
+        document.getElementById('chkShowFrenchLanguage' + tabcount).checked = true;
+        document.getElementById('chkShowPortuguesLanguage' + tabcount).checked = true;
     }
 
     function TabSortable(tabcount){
