@@ -161,3 +161,72 @@
     width: 250px;
     display: inline;
   }
+
+  .form-control{
+    width: 250px;
+  }
+  .inputLabelContainer{
+    text-align: end;
+  }
+
+  .addlink {
+    display: flex;
+    width: 100%;
+  }
+  .addlink .addlinkcontainer{
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .addlink .addlinksubcontainer{
+    display: flex;
+  }
+  .addlink .addlinksubcontainer label{
+    margin-right: 8px;
+    width: 80px;
+    margin-top: 5px;
+  }
+  .addlink .addlinksubcontainer input{
+    margin-right: 16px;
+    height: fit-content;
+  }
+  .addlink .addlinksubcontainer .addLinkDescription{
+    width: 603px;
+  }
+  .addlink .addlinksubcontainer button{
+    width: 100px;
+  }
+  .linksitems{
+    position: relative;
+    top: 80%;
+    left: 5%;
+    width: 683px;
+    background-color: #6287bb;
+    padding: 8px 20px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .linksitems ul{
+    display: inline-flex;
+    list-style-type: none;
+    font-size: 13px;
+    color: #f0f0f0;
+    margin-bottom: 0px;
+    padding-left: 0px;
+  }
+  
+
+  .linksitems ul span{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .linksitems ul a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .linksitems ul a:hover{
+    color: #f0f0f0;
+  }

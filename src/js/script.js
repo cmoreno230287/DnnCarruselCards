@@ -271,21 +271,22 @@
 
         if(checked){
             targetElement.style.display = "block";
-            //targetElementTabContent.style.display = "block";
         }else{
             targetElement.style.display = "none";
-            //targetElementTabContent.style.display = "none";
         }
     }
 
     function SetSectionStyle(){
         var tipoSeccion = document.getElementById("tipoSeccion");
-        var elements = document.querySelectorAll('[control-role="legend"]');        
-        DiabledEnableContainer("main-container", false, "");
+        var legendelements = document.querySelectorAll('[control-role="legend"]');           
+        var addlinkElements = document.querySelectorAll(".addlink");      
+        var linksitemsElements = document.querySelectorAll(".linksitems");     
+        DiabledEnableContainer("main-container", false, "");        
+        setShowAddLinkFormAndLayout(false, addlinkElements, linksitemsElements);
 
         switch(tipoSeccion.value){
             case "3des" : 
-                elements.forEach((element) => { 
+            legendelements.forEach((element) => { 
                     element.style.display = "none";
                 });
                 this.cardBackgroundColor = "#f0f0f0";
@@ -294,7 +295,7 @@
                 setCardsWidth("332px", "400px", "50%", "50%");
                 break;
             case "2des" : 
-                elements.forEach((element) => { 
+            legendelements.forEach((element) => { 
                     element.style.display = "none";
                 });
                 this.cardBackgroundColor = "#f0f0f0";
@@ -303,7 +304,7 @@
                 setCardsWidth("506px", "395px", "65%", "35%");
                 break;
             case "eve":
-                elements.forEach((element) => { 
+                legendelements.forEach((element) => { 
                     element.style.display = "block";
                 });
                 this.cardBackgroundColor = "#ffffff";
@@ -312,7 +313,7 @@
                 setCardsWidth("243px", "400px", "40%", "60%");
                 break;
             case "not":
-                elements.forEach((element) => { 
+                legendelements.forEach((element) => { 
                     element.style.display = "block";
                 });
                 this.cardBackgroundColor = "#f0f0f0";
@@ -320,9 +321,25 @@
                 setMaxLengthTitleAndText(350, 64);
                 setCardsWidth("243px", "400px", "40%", "60%");
                 break;
+            case "carr":
+                legendelements.forEach((element) => { 
+                    element.style.display = "none";
+                });
+                setShowAddLinkFormAndLayout(true, addlinkElements, linksitemsElements);
+                this.cardBackgroundColor = "#f0f0f0";
+                setCardsBackgroundColor();
+                setMaxLengthTitleAndText(217, 64);
+                setCardsWidth("1350px", "695px", "100%", "0%");
+                break;
             case "sel":
                 DiabledEnableContainer("main-container", true, ["tipoSeccion"]);
-                setCardsWidth("332px", "400px", "50%", "50%");
+                setCardsWidth("332px", "400px", "50%", "50%");                
+                addlinkElements.forEach((element) => { 
+                    element.style.display = "none";
+                });     
+                linksitemsElements.forEach((element) => { 
+                    element.style.display = "none";
+                });       
                 break;
         }
     }
@@ -387,11 +404,63 @@
         });
     }
 
+    function setShowAddLinkFormAndLayout(show, addlinkElements, linksitemsElements){            
+        var cardBodyElements = document.querySelectorAll(".card .card-body");     
+        var formCardElements = document.querySelectorAll(".formCard");   
+
+        if(show){     
+            cardBodyElements.forEach((element) => { 
+                element.style.display = "none";
+            });
+            addlinkElements.forEach((element) => { 
+                element.style.display = "block";
+            });
+            formCardElements.forEach((element) => { 
+                element.style.display = "none";
+            });
+            linksitemsElements.forEach((element) => { 
+                element.style.display = "inline-block";
+            });
+        }
+        else{
+            cardBodyElements.forEach((element) => { 
+                element.style.display = "block";
+            });
+            addlinkElements.forEach((element) => { 
+                element.style.display = "none";
+            });
+            formCardElements.forEach((element) => { 
+                element.style.display = "block";
+            });
+            linksitemsElements.forEach((element) => { 
+                element.style.display = "none";
+            });
+        }
+    }
+
     function ShowAllLanguageTabs(tabcount){
         document.getElementById('chkShowEnglishLanguage' + tabcount).checked = true;
         document.getElementById('chkShowSpanishLanguage' + tabcount).checked = true;
         document.getElementById('chkShowFrenchLanguage' + tabcount).checked = true;
         document.getElementById('chkShowPortuguesLanguage' + tabcount).checked = true;
+    }
+
+    function addLink(linknameId, linkurlId, linkDescriptionId, descriptionImageCarruselId, linkslistid){
+        var linkname = document.getElementById(linknameId);
+        var linkurl = document.getElementById(linkurlId); 
+        var linkslist = document.getElementById(linkslistid); 
+        var linkDescription = document.getElementById(linkDescriptionId); 
+        var descriptionImageCarrusel = document.getElementById(descriptionImageCarruselId); 
+        var createLiElement = document.createElement("li");
+        var createAElement = document.createElement("a");
+        var createSpanElement = document.createElement("span");
+        createAElement.setAttribute("href", linkurl.value);
+        createSpanElement.innerText = (linkslist.childNodes.length <= 0) ? "" : "|";
+        createAElement.innerText = linkname.value;
+        createLiElement.append(createSpanElement);
+        createLiElement.append(createAElement);
+        descriptionImageCarrusel.innerText = linkDescription.value;
+        linkslist.append(createLiElement);
     }
 
     function TabSortable(tabcount){
@@ -403,7 +472,6 @@
                 var tabContent = document.querySelectorAll('.tab-pane');
                 
                 var tabContainer = document.getElementById('tabContent');
-                //tabContainer.innerHTML = ''; // Clear existing tab content
     
                 tabs.forEach(function(tab) {
                     if(tab.id != "add-tab") {

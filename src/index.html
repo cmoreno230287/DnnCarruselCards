@@ -28,7 +28,7 @@
                 <option value="eve">Eventos</option>
                 <option value="not">Noticias</option>
                 <option value="2des">2 Destacados</option>
-                <option value="2des">Carrusel</option>
+                <option value="carr">Carrusel</option>
             </select>
         </div>
     </div>
@@ -105,7 +105,7 @@
                         <!-- Tab 1 Content -->
                         <div class="tab-pane fade show active" id="tabPaneEnglish" role="tabpanel" aria-labelledby="tabEnglish">
                             <div class="form-group row">
-                                <label for="scaleRange" class="col-sm-2 col-form-label">Size</label>
+                                <label for="scaleRange" class="col-sm-1 col-form-label">Size</label>
                                 <div class="col-sm-2">
                                     <input type="range" class="form-control-range mt-3" id="scaleRange" data-target-id="image" min="10" max="200" value="100">
                                 </div>
@@ -113,9 +113,13 @@
                             <div class="row mt-4">
                                 <div class="card col-md-4">
                                     <div class="image-wrapper">						  
-                                    <div id="image-container" class="image-container card-img-top" ondblclick="document.getElementById('file-input').click();">
-                                        <img id="image" class="image" draggable="false">
-                                    </div>
+                                        <div id="image-container" class="image-container card-img-top" ondblclick="document.getElementById('file-input').click();">
+                                            <img id="image" class="image" draggable="false">
+                                            <div class="linksitems">
+                                               <p id="DescriptionImageCarrusel">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                               <ul id="linkslist"></ul>
+                                            </div>
+                                        </div>
                                     </div>						
                                     <div class="card-body">
                                         <h5 class="card-title" id="cardtitle">Lorem ipsum dolor sit amet, consectetuer ipsum dolor</h5>
@@ -124,34 +128,71 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 RightColumnForm">
-                                    <form>
-                                      <div class="form-group">
-                                        <label for="title">Title</label>
-                                        <input type="text" class="form-control" id="title" role="title" data-target-id="cardtitle" onchange="changeTextContent(this)" placeholder="Enter title">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="description">Description</label>
-                                        <textarea class="form-control" id="description" data-target-id="cardText" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
-                                      </div>
-                                      <div class="form-group" control-role="legend">
-                                        <label for="legend">Legend</label>
-                                        <input type="text" class="form-control" id="legend" placeholder="Enter legend" hide-for-section-type="3des">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="linkName">Link Name</label>
-                                        <input type="text" class="form-control" data-target-id="readmorelink" id="linkName" placeholder="Enter link name" onchange="setLinkText(this, '')">
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="linkUrl">Link URL</label>
-                                        <input type="url" class="form-control" data-target-id="readmorelink" id="linkUrl" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
-                                      </div>
+                                    <form class="formCard">
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="title">Title</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="title" role="title" data-target-id="cardtitle" onchange="changeTextContent(this)" placeholder="Enter title">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="description">Description</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <textarea class="form-control" id="description" data-target-id="cardText" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4" control-role="legend">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="legend">Legend</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="legend" placeholder="Enter legend" hide-for-section-type="3des">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkName">Link Name</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" data-target-id="readmorelink" id="linkName" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkUrl">Link URL</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="url" class="form-control" data-target-id="readmorelink" id="linkUrl" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form class="addlink">                                        
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkName">Link Name</label>
+                                                <input type="text" class="form-control" id="addLinkName" placeholder="Enter link name">
+                                                <label for="addLinkUrl">Link URL</label>
+                                                <input type="url" class="form-control" id="addLinkUrl" placeholder="Enter URL">
+                                                <button type="button" class="btn btn-primary" onclick="addLink('addLinkName', 'addLinkUrl', 'addLinkDescription', 'DescriptionImageCarrusel', 'linkslist')">Add Link</button>
+                                            </div>
+                                        </div>
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkDescription">Description</label>
+                                                <input type="text" class="form-control addLinkDescription" id="addLinkDescription" placeholder="Enter Description">
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tabPaneSpanish" role="tabpanel" aria-labelledby="tabSpanish">
                             <div class="form-group row">
-                                <label for="scaleRangeSpanish" class="col-sm-2 col-form-label">Size</label>
+                                <label for="scaleRangeSpanish" class="col-sm-1 col-form-label">Size</label>
                                 <div class="col-sm-2">
                                     <input type="range" class="form-control-range mt-3" id="scaleRangeSpanish" data-target-id="imageSpanish" min="10" max="200" value="100">
                                 </div>
@@ -161,6 +202,10 @@
                                     <div class="image-wrapper">						  
                                     <div id="image-container-Spanish" class="image-container card-img-top" ondblclick="document.getElementById('file-input-Spanish').click();">
                                         <img id="imageSpanish" class="image" draggable="false">
+                                        <div class="linksitems">
+                                           <p id="DescriptionImageCarruselSpanish">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                           <ul id="linkslistSpanish"></ul>
+                                        </div>
                                     </div>
                                     </div>						
                                     <div class="card-body">
@@ -170,34 +215,71 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 RightColumnForm">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="titleSpanish">Title</label>
-                                            <input type="text" class="form-control" id="titleSpanish" data-target-id="cardtitleSpanish" onchange="changeTextContent(this)" placeholder="Enter title">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="descriptionSpanish">Description</label>
-                                            <textarea class="form-control" id="descriptionSpanish" data-target-id="cardTextSpanish" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
-                                        </div>
-                                        <div class="form-group" control-role="legend">
-                                            <label for="legend">Legend</label>
-                                            <input type="text" class="form-control" id="legendSpanish" placeholder="Enter legend">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="linkUrlSpanish">Link URL</label>
-                                            <input type="url" class="form-control" data-target-id="readmorelinkSpanish" id="linkUrlSpanish" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="linkNameSpanish">Link Name</label>
-                                            <input type="text" class="form-control" data-target-id="readmorelinkSpanish" id="linkNameSpanish" placeholder="Enter link name" onchange="setLinkText(this, '')">
-                                        </div>
+                                    <form class="formCard">
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="titleSpanish">Title</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="titleSpanish" data-target-id="cardtitleSpanish" onchange="changeTextContent(this)" placeholder="Enter title">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="descriptionSpanish">Description</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <textarea class="form-control" id="descriptionSpanish" data-target-id="cardTextSpanish" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4" control-role="legend">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="legendSpanish">Legend</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="legendSpanish" placeholder="Enter legend">
+                                            </div>
+                                        </div>                                   
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkNameSpanish">Link Name</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" data-target-id="readmorelinkSpanish" id="linkNameSpanish" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                            </div>
+                                        </div>                                   
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkUrlSpanish">Link URL</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="url" class="form-control" data-target-id="readmorelinkSpanish" id="linkUrlSpanish" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                            </div>
+                                        </div>  
                                     </form>
+                                    <form class="addlink">
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkNameSpanish">Link Name</label>
+                                                <input type="text" class="form-control" id="addLinkNameSpanish" placeholder="Enter link name">
+                                                <label for="addLinkUrlSpanish">Link URL</label>
+                                                <input type="url" class="form-control" id="addLinkUrlSpanish" placeholder="Enter URL">
+                                                <button type="button" class="btn btn-primary" onclick="addLink('addLinkNameSpanish', 'addLinkUrlSpanish', 'addLinkDescriptionSpanish', 'DescriptionImageCarruselSpanish', 'linkslistSpanish')">Add Link</button>
+                                            </div>
+                                        </div>
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkDescriptionSpanish">Description</label>
+                                                <input type="text" class="form-control addLinkDescription" id="addLinkDescriptionSpanish" placeholder="Enter Description">
+                                            </div>
+                                        </div>
+                                    </form>                             
                                 </div>
                             </div>
                         </div> 
                         <div class="tab-pane fade" id="tabPaneFrench" role="tabpanel" aria-labelledby="tabFrench">
                             <div class="form-group row">
-                                <label for="scaleRangeFrench" class="col-sm-2 col-form-label">Size</label>
+                                <label for="scaleRangeFrench" class="col-sm-1 col-form-label">Size</label>
                                 <div class="col-sm-2">
                                     <input type="range" class="form-control-range mt-3" id="scaleRangeFrench" data-target-id="imageFrench" min="10" max="200" value="100">
                                 </div>
@@ -207,6 +289,10 @@
                                     <div class="image-wrapper">						  
                                         <div id="image-container-French" class="image-container card-img-top" ondblclick="document.getElementById('file-input-French').click();">
                                             <img id="imageFrench" class="image" draggable="false">
+                                            <div class="linksitems">
+                                                <p id="DescriptionImageCarruselFrench">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                                <ul id="linkslistFrench"></ul>
+                                             </div>
                                         </div>
                                     </div>						
                                     <div class="card-body">
@@ -216,34 +302,71 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 RightColumnForm">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="titleFrench">Title</label>
-                                            <input type="text" class="form-control" id="titleFrench" data-target-id="cardtitleFrench" onchange="changeTextContent(this)" placeholder="Enter title">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="descriptionFrench">Description</label>
-                                            <textarea class="form-control" id="descriptionFrench" data-target-id="cardTextFrench" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
-                                        </div>
-                                        <div class="form-group" control-role="legend">
-                                            <label for="legend">Legend</label>
-                                            <input type="text" class="form-control" id="legendFrench" placeholder="Enter legend">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="linkUrlFrench">Link URL</label>
-                                            <input type="url" class="form-control" data-target-id="readmorelinkFrench" id="linkUrlFrench" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="linkNameFrench">Link Name</label>
-                                            <input type="text" class="form-control" data-target-id="readmorelinkFrench" id="linkNameFrench" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                    <form class="formCard">
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="titleFrench">Title</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="titleFrench" data-target-id="cardtitleFrench" onchange="changeTextContent(this)" placeholder="Enter title">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="descriptionFrench">Description</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <textarea class="form-control" id="descriptionFrench" data-target-id="cardTextFrench" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4" control-role="legend">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="legend">Legend</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="legendFrench" placeholder="Enter legend">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkNameFrench">Link Name</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" data-target-id="readmorelinkFrench" id="linkNameFrench" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkUrlFrench">Link URL</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="url" class="form-control" data-target-id="readmorelinkFrench" id="linkUrlFrench" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                            </div>
                                         </div>
                                     </form>
+                                    <form class="addlink">
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkNameFrench">Link Name</label>
+                                                <input type="text" class="form-control" id="addLinkNameFrench" placeholder="Enter link name">
+                                                <label for="addLinkUrlFrench">Link URL</label>
+                                                <input type="url" class="form-control" id="addLinkUrlFrench" placeholder="Enter URL">
+                                                <button type="button" class="btn btn-primary" onclick="addLink('addLinkNameFrench', 'addLinkUrlFrench', 'addLinkDescriptionFrench', 'DescriptionImageCarruselFrench', 'linkslistFrench')">Add Link</button>
+                                            </div>
+                                        </div>
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkDescriptionFrench">Description</label>
+                                                <input type="text" class="form-control addLinkDescription" id="addLinkDescriptionFrench" placeholder="Enter Description">
+                                            </div>
+                                        </div>
+                                    </form>                                                                        
                                 </div>
                             </div>
                         </div>   
                         <div class="tab-pane fade" id="tabPanePortugues" role="tabpanel" aria-labelledby="tabPortugues">
                             <div class="form-group row">
-                                <label for="scaleRangePortugues" class="col-sm-2 col-form-label">Size</label>
+                                <label for="scaleRangePortugues" class="col-sm-1 col-form-label">Size</label>
                                 <div class="col-sm-2">
                                     <input type="range" class="form-control-range mt-3" id="scaleRangePortugues" data-target-id="imagePortugues" min="10" max="200" value="100">
                                 </div>
@@ -253,6 +376,10 @@
                                     <div class="image-wrapper">						  
                                         <div id="image-container-Portugues" class="image-container card-img-top" ondblclick="document.getElementById('file-input-Portugues').click();">
                                             <img id="imagePortugues" class="image" draggable="false">
+                                            <div class="linksitems">
+                                                <p id="DescriptionImageCarruselPortugues">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                                <ul id="linkslistPortugues"></ul>
+                                             </div>
                                         </div>
                                     </div>						
                                     <div class="card-body">
@@ -262,28 +389,65 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 RightColumnForm">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="titlePortugues">Title</label>
-                                            <input type="text" class="form-control" id="titlePortugues" data-target-id="cardtitlePortugues" onchange="changeTextContent(this)" placeholder="Enter title">
+                                    <form class="formCard">
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="titlePortugues">Title</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="titlePortugues" data-target-id="cardtitlePortugues" onchange="changeTextContent(this)" placeholder="Enter title">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="descriptionPortugues">Description</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <textarea class="form-control" id="descriptionPortugues" data-target-id="cardTextPortugues" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4" control-role="legend">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="legend">Legend</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" id="legendPortugues" placeholder="Enter legend">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkNamePortugues">Link Name</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="text" class="form-control" data-target-id="readmorelinkPortugues" id="linkNamePortugues" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                            </div>
+                                        </div>                                    
+                                        <div class="row mt-4">
+                                            <div class="col-md-4 inputLabelContainer">
+                                                <label for="linkUrlPortugues">Link URL</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <input type="url" class="form-control" data-target-id="readmorelinkPortugues" id="linkUrlPortugues" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="descriptionPortugues">Description</label>
-                                            <textarea class="form-control" id="descriptionPortugues" data-target-id="cardTextPortugues" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                    </form> 
+                                    <form class="addlink">
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkNamePortugues">Link Name</label>
+                                                <input type="text" class="form-control" id="addLinkNamePortugues" placeholder="Enter link name">
+                                                <label for="addLinkUrlPortugues">Link URL</label>
+                                                <input type="url" class="form-control" id="addLinkUrlPortugues" placeholder="Enter URL">
+                                                <button type="button" class="btn btn-primary" onclick="addLink('addLinkNamePortugues', 'addLinkUrlPortugues', 'addLinkDescriptionPortugues', 'DescriptionImageCarruselPortugues', 'linkslistPortugues')">Add Link</button>
+                                            </div>
                                         </div>
-                                        <div class="form-group" control-role="legend">
-                                            <label for="legend">Legend</label>
-                                            <input type="text" class="form-control" id="legendPortugues" placeholder="Enter legend">
+                                        <div class="addlinkcontainer">
+                                            <div class="addlinksubcontainer">
+                                                <label for="addLinkDescriptionPortugues">Description</label>
+                                                <input type="text" class="form-control addLinkDescription" id="addLinkDescriptionPortugues" placeholder="Enter Description">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="linkUrlPortugues">Link URL</label>
-                                            <input type="url" class="form-control" data-target-id="readmorelinkPortugues" id="linkUrlPortugues" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="linkNamePortugues">Link Name</label>
-                                            <input type="text" class="form-control" data-target-id="readmorelinkPortugues" id="linkNamePortugues" placeholder="Enter link name" onchange="setLinkText(this, '')">
-                                        </div>
-                                    </form>
+                                    </form>                                                                       
                                 </div>
                             </div>
                         </div>     

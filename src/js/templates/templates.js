@@ -56,7 +56,7 @@ const teplateContentTab = `<div class="row mt-4">
             <!-- Tab 1 Content -->
             <div class="tab-pane fade show active" id="tabPaneEnglish{tabCounter}" role="tabpanel" aria-labelledby="tabEnglish{tabCounter}">
                 <div class="form-group row">
-                    <label for="scaleRange{tabCounter}" class="col-sm-2 col-form-label">Size</label>
+                    <label for="scaleRange{tabCounter}" class="col-sm-1 col-form-label">Size</label>
                     <div class="col-sm-2">
                         <input type="range" class="form-control-range mt-3" id="scaleRange{tabCounter}" data-target-id="image{tabCounter}" min="10" max="200" value="100">
                     </div>
@@ -76,33 +76,53 @@ const teplateContentTab = `<div class="row mt-4">
                     </div>
                     <div class="col-md-6 RightColumnForm">
                         <form>
-                          <div class="form-group">
-                            <label for="title{tabCounter}">Title</label>
-                            <input type="text" class="form-control" id="title{tabCounter}" data-target-id="cardtitle{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
-                          </div>
-                          <div class="form-group">
-                            <label for="description{tabCounter}">Description</label>
-                            <textarea class="form-control" id="description{tabCounter}" data-target-id="cardText{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
-                          </div>
-                          <div class="form-group" control-role="legend">
-                            <label for="legend{tabCounter}">Legend</label>
-                            <input type="text" class="form-control" id="legend{tabCounter}" placeholder="Enter legend">
-                          </div>
-                          <div class="form-group">
-                            <label for="linkName{tabCounter}">Link Name</label>
-                            <input type="text" class="form-control" data-target-id="readmorelink{tabCounter}" id="linkName{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
-                          </div>
-                          <div class="form-group">
-                            <label for="linkUrl{tabCounter}">Link URL</label>
-                            <input type="url" class="form-control" data-target-id="readmorelink{tabCounter}" id="linkUrl{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
-                          </div>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="title{tabCounter}">Title</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="title{tabCounter}" data-target-id="cardtitle{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="description{tabCounter}">Description</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <textarea class="form-control" id="description{tabCounter}" data-target-id="cardText{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-4" control-role="legend">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="legend{tabCounter}">Legend</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="legend{tabCounter}" placeholder="Enter legend">
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkName{tabCounter}">Link Name</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" data-target-id="readmorelink{tabCounter}" id="linkName{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkUrl{tabCounter}">Link URL</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="url" class="form-control" data-target-id="readmorelink{tabCounter}" id="linkUrl{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabPaneSpanish{tabCounter}" role="tabpanel" aria-labelledby="tabSpanish{tabCounter}">
                 <div class="form-group row">
-                    <label for="scaleRangeSpanish{tabCounter}" class="col-sm-2 col-form-label">Size</label>
+                    <label for="scaleRangeSpanish{tabCounter}" class="col-sm-1 col-form-label">Size</label>
                     <div class="col-sm-2">
                         <input type="range" class="form-control-range mt-3" id="scaleRangeSpanish{tabCounter}" data-target-id="imageSpanish{tabCounter}" min="10" max="200" value="100">
                     </div>
@@ -122,25 +142,45 @@ const teplateContentTab = `<div class="row mt-4">
                     </div>
                     <div class="col-md-6 RightColumnForm">
                         <form>
-                            <div class="form-group">
-                                <label for="titleSpanish{tabCounter}">Title</label>
-                                <input type="text" class="form-control" id="titleSpanish{tabCounter}" data-target-id="cardtitleSpanish{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="titleSpanish{tabCounter}">Title</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="titleSpanish{tabCounter}" data-target-id="cardtitleSpanish{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="descriptionSpanish{tabCounter}">Description</label>
-                                <textarea class="form-control" id="descriptionSpanish{tabCounter}" data-target-id="cardTextSpanish{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="descriptionSpanish{tabCounter}">Description</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <textarea class="form-control" id="descriptionSpanish{tabCounter}" data-target-id="cardTextSpanish{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                </div>
                             </div>
-                            <div class="form-group" control-role="legend">
-                                <label for="legendSpanish{tabCounter}">Legend</label>
-                                <input type="text" class="form-control" id="legendSpanish{tabCounter}" placeholder="Enter legend">
+                            <div class="row mt-4" control-role="legend">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="legendSpanish{tabCounter}">Legend</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="legendSpanish{tabCounter}" placeholder="Enter legend">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="linkUrlSpanish{tabCounter}">Link URL</label>
-                                <input type="url" class="form-control" data-target-id="readmorelinkSpanish{tabCounter}" id="linkUrlSpanish{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkNameSpanish{tabCounter}">Link Name</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" data-target-id="readmorelinkSpanish{tabCounter}" id="linkNameSpanish{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="linkNameSpanish{tabCounter}">Link Name</label>
-                                <input type="text" class="form-control" data-target-id="readmorelinkSpanish{tabCounter}" id="linkNameSpanish{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkUrlSpanish{tabCounter}">Link URL</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="url" class="form-control" data-target-id="readmorelinkSpanish{tabCounter}" id="linkUrlSpanish{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -148,7 +188,7 @@ const teplateContentTab = `<div class="row mt-4">
             </div> 
             <div class="tab-pane fade" id="tabPaneFrench{tabCounter}" role="tabpanel" aria-labelledby="tabFrench{tabCounter}">
                 <div class="form-group row">
-                    <label for="scaleRangeFrench{tabCounter}" class="col-sm-2 col-form-label">Size</label>
+                    <label for="scaleRangeFrench{tabCounter}" class="col-sm-1 col-form-label">Size</label>
                     <div class="col-sm-2">
                         <input type="range" class="form-control-range mt-3" id="scaleRangeFrench{tabCounter}" data-target-id="imageFrench{tabCounter}" min="10" max="200" value="100">
                     </div>
@@ -168,25 +208,45 @@ const teplateContentTab = `<div class="row mt-4">
                     </div>
                     <div class="col-md-6 RightColumnForm">
                         <form>
-                            <div class="form-group">
-                                <label for="titleFrench{tabCounter}">Title</label>
-                                <input type="text" class="form-control" id="titleFrench{tabCounter}" data-target-id="cardtitleFrench{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="titleFrench{tabCounter}">Title</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="titleFrench{tabCounter}" data-target-id="cardtitleFrench{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="descriptionFrench{tabCounter}">Description</label>
-                                <textarea class="form-control" id="descriptionFrench{tabCounter}" data-target-id="cardTextFrench{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="descriptionFrench{tabCounter}">Description</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <textarea class="form-control" id="descriptionFrench{tabCounter}" data-target-id="cardTextFrench{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                </div>
                             </div>
-                            <div class="form-group" control-role="legend">
-                                <label for="legendFrench{tabCounter}">Legend</label>
-                                <input type="text" class="form-control" id="legendFrench{tabCounter}" placeholder="Enter legend">
+                            <div class="row mt-4" control-role="legend">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="legendFrench{tabCounter}">Legend</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="legendFrench{tabCounter}" placeholder="Enter legend">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="linkUrlFrench{tabCounter}">Link URL</label>
-                                <input type="url" class="form-control" data-target-id="readmorelinkFrench{tabCounter}" id="linkUrlFrench{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkNameFrench{tabCounter}">Link Name</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" data-target-id="readmorelinkFrench{tabCounter}" id="linkNameFrench{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="linkNameFrench{tabCounter}">Link Name</label>
-                                <input type="text" class="form-control" data-target-id="readmorelinkFrench{tabCounter}" id="linkNameFrench{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkUrlFrench{tabCounter}">Link URL</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="url" class="form-control" data-target-id="readmorelinkFrench{tabCounter}" id="linkUrlFrench{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -194,7 +254,7 @@ const teplateContentTab = `<div class="row mt-4">
             </div>   
             <div class="tab-pane fade" id="tabPanePortugues{tabCounter}" role="tabpanel" aria-labelledby="tabPortugues{tabCounter}">
                 <div class="form-group row">
-                    <label for="scaleRangePortugues{tabCounter}" class="col-sm-2 col-form-label">Size</label>
+                    <label for="scaleRangePortugues{tabCounter}" class="col-sm-1 col-form-label">Size</label>
                     <div class="col-sm-2">
                         <input type="range" class="form-control-range mt-3" id="scaleRangePortugues{tabCounter}" data-target-id="imagePortugues{tabCounter}" min="10" max="200" value="100">
                     </div>
@@ -214,25 +274,45 @@ const teplateContentTab = `<div class="row mt-4">
                     </div>
                     <div class="col-md-6 RightColumnForm">
                         <form>
-                            <div class="form-group">
-                                <label for="titlePortugues{tabCounter}">Title</label>
-                                <input type="text" class="form-control" id="titlePortugues{tabCounter}" data-target-id="cardtitlePortugues{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="titlePortugues{tabCounter}">Title</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="titlePortugues{tabCounter}" data-target-id="cardtitlePortugues{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="descriptionPortugues{tabCounter}">Description</label>
-                                <textarea class="form-control" id="descriptionPortugues{tabCounter}" data-target-id="cardTextPortugues{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="descriptionPortugues{tabCounter}">Description</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <textarea class="form-control" id="descriptionPortugues{tabCounter}" data-target-id="cardTextPortugues{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
+                                </div>
                             </div>
-                            <div class="form-group" control-role="legend">
-                                <label for="legendPortugues{tabCounter}">Legend</label>
-                                <input type="text" class="form-control" id="legendPortugues{tabCounter}" placeholder="Enter legend">
+                            <div class="row mt-4" control-role="legend">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="legendPortugues{tabCounter}">Legend</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" id="legendPortugues{tabCounter}" placeholder="Enter legend">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="linkUrlPortugues{tabCounter}">Link URL</label>
-                                <input type="url" class="form-control" data-target-id="readmorelinkPortugues{tabCounter}" id="linkUrlPortugues{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkNamePortugues{tabCounter}">Link Name</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" class="form-control" data-target-id="readmorelinkPortugues{tabCounter}" id="linkNamePortugues{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="linkNamePortugues{tabCounter}">Link Name</label>
-                                <input type="text" class="form-control" data-target-id="readmorelinkPortugues{tabCounter}" id="linkNamePortugues{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
+                            <div class="row mt-4">
+                                <div class="col-md-4 inputLabelContainer">
+                                    <label for="linkUrlPortugues{tabCounter}">Link URL</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="url" class="form-control" data-target-id="readmorelinkPortugues{tabCounter}" id="linkUrlPortugues{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
+                                </div>
                             </div>
                         </form>
                     </div>
