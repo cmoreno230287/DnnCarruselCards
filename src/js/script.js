@@ -454,13 +454,25 @@
         var createLiElement = document.createElement("li");
         var createAElement = document.createElement("a");
         var createSpanElement = document.createElement("span");
+        var createSpanRemoveElement = document.createElement("span");
         createAElement.setAttribute("href", linkurl.value);
         createSpanElement.innerText = (linkslist.childNodes.length <= 0) ? "" : "|";
+        createSpanRemoveElement.classList.add("xbuttonremove");
+        createSpanRemoveElement.innerText = "X";
         createAElement.innerText = linkname.value;
         createLiElement.append(createSpanElement);
         createLiElement.append(createAElement);
+        createLiElement.append(createSpanRemoveElement);
         descriptionImageCarrusel.innerText = linkDescription.value;
         linkslist.append(createLiElement);
+
+        document.querySelectorAll('.xbuttonremove').forEach(function(button) {
+            // Añade un evento al hacer clic
+            button.addEventListener('click', function() {
+                // Elimina el elemento padre del botón, que es el <li>
+                this.parentElement.remove();
+            });
+        });
     }
 
     function TabSortable(tabcount){

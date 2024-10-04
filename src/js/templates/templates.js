@@ -54,7 +54,7 @@ const teplateContentTab = `<div class="row mt-4">
         </ul> 
         <div class="tab-content" id="tabContentLanguagesImagesEnglish">
             <!-- Tab 1 Content -->
-            <div class="tab-pane fade show active" id="tabPaneEnglish{tabCounter}" role="tabpanel" aria-labelledby="tabEnglish{tabCounter}">
+            <div class="tab-pane fade show active" id="tabPaneEnglish{tabCounter}" role="tabpanel" aria-labelledby="tabEnglish">
                 <div class="form-group row">
                     <label for="scaleRange{tabCounter}" class="col-sm-1 col-form-label">Size</label>
                     <div class="col-sm-2">
@@ -66,6 +66,10 @@ const teplateContentTab = `<div class="row mt-4">
                         <div class="image-wrapper">						  
                             <div id="image-container{tabCounter}" class="image-container card-img-top" ondblclick="document.getElementById('file-input{tabCounter}').click();">
                                 <img id="image{tabCounter}" class="image" draggable="false">
+                                <div class="linksitems">
+                                <p id="DescriptionImageCarrusel{tabCounter}">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                <ul id="linkslist{tabCounter}"></ul>
+                                </div>
                             </div>
                         </div>						
                         <div class="card-body">
@@ -75,13 +79,13 @@ const teplateContentTab = `<div class="row mt-4">
                         </div>
                     </div>
                     <div class="col-md-6 RightColumnForm">
-                        <form>
+                        <form class="formCard">
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="title{tabCounter}">Title</label>
                                 </div>
                                 <div class="col-md-1">
-                                    <input type="text" class="form-control" id="title{tabCounter}" data-target-id="cardtitle{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
+                                    <input type="text" class="form-control" id="title{tabCounter}" role="title" data-target-id="cardtitle{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
                                 </div>
                             </div>
                             <div class="row mt-4">
@@ -97,7 +101,7 @@ const teplateContentTab = `<div class="row mt-4">
                                     <label for="legend{tabCounter}">Legend</label>
                                 </div>
                                 <div class="col-md-1">
-                                    <input type="text" class="form-control" id="legend{tabCounter}" placeholder="Enter legend">
+                                    <input type="text" class="form-control" id="legend{tabCounter}" placeholder="Enter legend" hide-for-section-type="3des">
                                 </div>
                             </div>
                             <div class="row mt-4">
@@ -117,10 +121,27 @@ const teplateContentTab = `<div class="row mt-4">
                                 </div>
                             </div>
                         </form>
+                        <form class="addlink">                                        
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkName{tabCounter}">Link Name</label>
+                                    <input type="text" class="form-control" id="addLinkName{tabCounter}" placeholder="Enter link name">
+                                    <label for="addLinkUrl{tabCounter}">Link URL</label>
+                                    <input type="url" class="form-control" id="addLinkUrl{tabCounter}" placeholder="Enter URL">
+                                    <button type="button" class="btn btn-primary" onclick="addLink('addLinkName{tabCounter}', 'addLinkUrl{tabCounter}', 'addLinkDescription{tabCounter}', 'DescriptionImageCarrusel{tabCounter}', 'linkslist{tabCounter}')">Add Link</button>
+                                </div>
+                            </div>
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkDescription{tabCounter}">Description</label>
+                                    <input type="text" class="form-control addLinkDescription" id="addLinkDescription{tabCounter}" placeholder="Enter Description">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="tabPaneSpanish{tabCounter}" role="tabpanel" aria-labelledby="tabSpanish{tabCounter}">
+            <div class="tab-pane fade" id="tabPaneSpanish{tabCounter}" role="tabpanel" aria-labelledby="tabSpanish">
                 <div class="form-group row">
                     <label for="scaleRangeSpanish{tabCounter}" class="col-sm-1 col-form-label">Size</label>
                     <div class="col-sm-2">
@@ -132,6 +153,10 @@ const teplateContentTab = `<div class="row mt-4">
                         <div class="image-wrapper">						  
                             <div id="image-container-Spanish{tabCounter}" class="image-container card-img-top" ondblclick="document.getElementById('file-input-Spanish{tabCounter}').click();">
                                 <img id="imageSpanish{tabCounter}" class="image" draggable="false">
+                                <div class="linksitems">
+                                <p id="DescriptionImageCarruselSpanish{tabCounter}">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                <ul id="linkslistSpanish{tabCounter}"></ul>
+                                </div>
                             </div>
                         </div>						
                         <div class="card-body">
@@ -141,7 +166,7 @@ const teplateContentTab = `<div class="row mt-4">
                         </div>
                     </div>
                     <div class="col-md-6 RightColumnForm">
-                        <form>
+                        <form class="formCard">
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="titleSpanish{tabCounter}">Title</label>
@@ -149,7 +174,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" id="titleSpanish{tabCounter}" data-target-id="cardtitleSpanish{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="descriptionSpanish{tabCounter}">Description</label>
@@ -157,7 +182,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <textarea class="form-control" id="descriptionSpanish{tabCounter}" data-target-id="cardTextSpanish{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4" control-role="legend">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="legendSpanish{tabCounter}">Legend</label>
@@ -165,7 +190,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" id="legendSpanish{tabCounter}" placeholder="Enter legend">
                                 </div>
-                            </div>
+                            </div>                                   
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="linkNameSpanish{tabCounter}">Link Name</label>
@@ -173,7 +198,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" data-target-id="readmorelinkSpanish{tabCounter}" id="linkNameSpanish{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
                                 </div>
-                            </div>
+                            </div>                                   
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="linkUrlSpanish{tabCounter}">Link URL</label>
@@ -181,8 +206,25 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="url" class="form-control" data-target-id="readmorelinkSpanish{tabCounter}" id="linkUrlSpanish{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
                                 </div>
-                            </div>
+                            </div>  
                         </form>
+                        <form class="addlink">
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkNameSpanish{tabCounter}">Link Name</label>
+                                    <input type="text" class="form-control" id="addLinkNameSpanish{tabCounter}" placeholder="Enter link name">
+                                    <label for="addLinkUrlSpanish{tabCounter}">Link URL</label>
+                                    <input type="url" class="form-control" id="addLinkUrlSpanish{tabCounter}" placeholder="Enter URL">
+                                    <button type="button" class="btn btn-primary" onclick="addLink('addLinkNameSpanish{tabCounter}', 'addLinkUrlSpanish{tabCounter}', 'addLinkDescriptionSpanish{tabCounter}', 'DescriptionImageCarruselSpanish{tabCounter}', 'linkslistSpanish{tabCounter}')">Add Link</button>
+                                </div>
+                            </div>
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkDescriptionSpanish{tabCounter}">Description</label>
+                                    <input type="text" class="form-control addLinkDescription" id="addLinkDescriptionSpanish{tabCounter}" placeholder="Enter Description">
+                                </div>
+                            </div>
+                        </form>                             
                     </div>
                 </div>
             </div> 
@@ -198,6 +240,10 @@ const teplateContentTab = `<div class="row mt-4">
                         <div class="image-wrapper">						  
                             <div id="image-container-French{tabCounter}" class="image-container card-img-top" ondblclick="document.getElementById('file-input-French{tabCounter}').click();">
                                 <img id="imageFrench{tabCounter}" class="image" draggable="false">
+                                <div class="linksitems">
+                                    <p id="DescriptionImageCarruselFrench{tabCounter}">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                    <ul id="linkslistFrench{tabCounter}"></ul>
+                                </div>
                             </div>
                         </div>						
                         <div class="card-body">
@@ -207,7 +253,7 @@ const teplateContentTab = `<div class="row mt-4">
                         </div>
                     </div>
                     <div class="col-md-6 RightColumnForm">
-                        <form>
+                        <form class="formCard">
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="titleFrench{tabCounter}">Title</label>
@@ -215,7 +261,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" id="titleFrench{tabCounter}" data-target-id="cardtitleFrench{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="descriptionFrench{tabCounter}">Description</label>
@@ -223,15 +269,15 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <textarea class="form-control" id="descriptionFrench{tabCounter}" data-target-id="cardTextFrench{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4" control-role="legend">
                                 <div class="col-md-4 inputLabelContainer">
-                                    <label for="legendFrench{tabCounter}">Legend</label>
+                                    <label for="legend{tabCounter}">Legend</label>
                                 </div>
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" id="legendFrench{tabCounter}" placeholder="Enter legend">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="linkNameFrench{tabCounter}">Link Name</label>
@@ -239,7 +285,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" data-target-id="readmorelinkFrench{tabCounter}" id="linkNameFrench{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="linkUrlFrench{tabCounter}">Link URL</label>
@@ -249,9 +295,26 @@ const teplateContentTab = `<div class="row mt-4">
                                 </div>
                             </div>
                         </form>
+                        <form class="addlink">
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkNameFrench{tabCounter}">Link Name</label>
+                                    <input type="text" class="form-control" id="addLinkNameFrench{tabCounter}" placeholder="Enter link name">
+                                    <label for="addLinkUrlFrench{tabCounter}">Link URL</label>
+                                    <input type="url" class="form-control" id="addLinkUrlFrench{tabCounter}" placeholder="Enter URL">
+                                    <button type="button" class="btn btn-primary" onclick="addLink('addLinkNameFrench{tabCounter}', 'addLinkUrlFrench{tabCounter}', 'addLinkDescriptionFrench{tabCounter}', 'DescriptionImageCarruselFrench{tabCounter}', 'linkslistFrench{tabCounter}')">Add Link</button>
+                                </div>
+                            </div>
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkDescriptionFrench{tabCounter}">Description</label>
+                                    <input type="text" class="form-control addLinkDescription" id="addLinkDescriptionFrench{tabCounter}" placeholder="Enter Description">
+                                </div>
+                            </div>
+                        </form>                                                                        
                     </div>
                 </div>
-            </div>   
+            </div>  
             <div class="tab-pane fade" id="tabPanePortugues{tabCounter}" role="tabpanel" aria-labelledby="tabPortugues{tabCounter}">
                 <div class="form-group row">
                     <label for="scaleRangePortugues{tabCounter}" class="col-sm-1 col-form-label">Size</label>
@@ -264,6 +327,10 @@ const teplateContentTab = `<div class="row mt-4">
                         <div class="image-wrapper">						  
                             <div id="image-container-Portugues{tabCounter}" class="image-container card-img-top" ondblclick="document.getElementById('file-input-Portugues{tabCounter}').click();">
                                 <img id="imagePortugues{tabCounter}" class="image" draggable="false">
+                                <div class="linksitems">
+                                    <p id="DescriptionImageCarruselPortugues{tabCounter}">OAS/CICAD publishes Thematic National Evaluation Reports 2023 of the Eighth Round of the Multilateral Evaluation Mechanism</p>
+                                    <ul id="linkslistPortugues{tabCounter}"></ul>
+                                </div>
                             </div>
                         </div>						
                         <div class="card-body">
@@ -273,7 +340,7 @@ const teplateContentTab = `<div class="row mt-4">
                         </div>
                     </div>
                     <div class="col-md-6 RightColumnForm">
-                        <form>
+                        <form class="formCard">
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="titlePortugues{tabCounter}">Title</label>
@@ -281,7 +348,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" id="titlePortugues{tabCounter}" data-target-id="cardtitlePortugues{tabCounter}" onchange="changeTextContent(this)" placeholder="Enter title">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="descriptionPortugues{tabCounter}">Description</label>
@@ -289,15 +356,15 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <textarea class="form-control" id="descriptionPortugues{tabCounter}" data-target-id="cardTextPortugues{tabCounter}" placeholder="Enter description" rows="3" onchange="changeTextContent(this)"></textarea>
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4" control-role="legend">
                                 <div class="col-md-4 inputLabelContainer">
-                                    <label for="legendPortugues{tabCounter}">Legend</label>
+                                    <label for="legend{tabCounter}">Legend</label>
                                 </div>
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" id="legendPortugues{tabCounter}" placeholder="Enter legend">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="linkNamePortugues{tabCounter}">Link Name</label>
@@ -305,7 +372,7 @@ const teplateContentTab = `<div class="row mt-4">
                                 <div class="col-md-1">
                                     <input type="text" class="form-control" data-target-id="readmorelinkPortugues{tabCounter}" id="linkNamePortugues{tabCounter}" placeholder="Enter link name" onchange="setLinkText(this, '')">
                                 </div>
-                            </div>
+                            </div>                                    
                             <div class="row mt-4">
                                 <div class="col-md-4 inputLabelContainer">
                                     <label for="linkUrlPortugues{tabCounter}">Link URL</label>
@@ -314,7 +381,24 @@ const teplateContentTab = `<div class="row mt-4">
                                     <input type="url" class="form-control" data-target-id="readmorelinkPortugues{tabCounter}" id="linkUrlPortugues{tabCounter}" placeholder="Enter URL" onchange="setLinkUrl(this, '')">
                                 </div>
                             </div>
-                        </form>
+                        </form> 
+                        <form class="addlink">
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkNamePortugues{tabCounter}">Link Name</label>
+                                    <input type="text" class="form-control" id="addLinkNamePortugues{tabCounter}" placeholder="Enter link name">
+                                    <label for="addLinkUrlPortugues{tabCounter}">Link URL</label>
+                                    <input type="url" class="form-control" id="addLinkUrlPortugues{tabCounter}" placeholder="Enter URL">
+                                    <button type="button" class="btn btn-primary" onclick="addLink('addLinkNamePortugues{tabCounter}', 'addLinkUrlPortugues{tabCounter}', 'addLinkDescriptionPortugues{tabCounter}', 'DescriptionImageCarruselPortugues{tabCounter}', 'linkslistPortugues{tabCounter}')">Add Link</button>
+                                </div>
+                            </div>
+                            <div class="addlinkcontainer">
+                                <div class="addlinksubcontainer">
+                                    <label for="addLinkDescriptionPortugues{tabCounter}">Description</label>
+                                    <input type="text" class="form-control addLinkDescription" id="addLinkDescriptionPortugues{tabCounter}" placeholder="Enter Description">
+                                </div>
+                            </div>
+                        </form>                                                                       
                     </div>
                 </div>
             </div>     

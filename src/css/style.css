@@ -230,3 +230,34 @@
   .linksitems ul a:hover{
     color: #f0f0f0;
   }
+  
+  .xbuttonremove {
+    color: #fff;
+    cursor: pointer;
+    margin-left: 2px;
+    font-size: 9px;
+    vertical-align: text-top;			
+    font-family: Comic Sans MS;
+    display:none;
+}
+
+.xbuttonremove:hover {
+    color: #fff;
+    padding:1px;
+    border-radius: 20%;			
+    font-size: 10px;			
+    display:block;
+    font-weight: bolder;
+}
+
+.xbuttonremove:active {
+    padding:1px;		
+    font-size: 10px;			
+    display:block;
+    font-weight: bolder;
+    color: #ccc;
+}
+
+li:hover .xbuttonremove {
+    display: inline;
+}
