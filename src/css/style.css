@@ -186,6 +186,11 @@
     width: 80px;
     margin-top: 5px;
   }
+  .addlink .addlinksubcontainer .secondlabel{
+    margin-right: 8px;
+    width: 130px;
+    margin-top: 5px;
+  }  
   .addlink .addlinksubcontainer input{
     margin-right: 16px;
     height: fit-content;

@@ -286,7 +286,7 @@
 
         switch(tipoSeccion.value){
             case "3des" : 
-            legendelements.forEach((element) => { 
+                legendelements.forEach((element) => { 
                     element.style.display = "none";
                 });
                 this.cardBackgroundColor = "#f0f0f0";
@@ -295,7 +295,7 @@
                 setCardsWidth("332px", "400px", "50%", "50%");
                 break;
             case "2des" : 
-            legendelements.forEach((element) => { 
+                legendelements.forEach((element) => { 
                     element.style.display = "none";
                 });
                 this.cardBackgroundColor = "#f0f0f0";
@@ -305,7 +305,7 @@
                 break;
             case "eve":
                 legendelements.forEach((element) => { 
-                    element.style.display = "block";
+                    element.style.display = "flex";
                 });
                 this.cardBackgroundColor = "#ffffff";
                 setCardsBackgroundColor();
@@ -314,7 +314,7 @@
                 break;
             case "not":
                 legendelements.forEach((element) => { 
-                    element.style.display = "block";
+                    element.style.display = "flex";
                 });
                 this.cardBackgroundColor = "#f0f0f0";
                 setCardsBackgroundColor();
@@ -406,7 +406,8 @@
 
     function setShowAddLinkFormAndLayout(show, addlinkElements, linksitemsElements){            
         var cardBodyElements = document.querySelectorAll(".card .card-body");     
-        var formCardElements = document.querySelectorAll(".formCard");   
+        var formCardElements = document.querySelectorAll(".formCard");        
+        var formaddlinkElements = document.querySelectorAll(".RightColumnForm");   
 
         if(show){     
             cardBodyElements.forEach((element) => { 
@@ -421,6 +422,9 @@
             linksitemsElements.forEach((element) => { 
                 element.style.display = "inline-block";
             });
+            formaddlinkElements.forEach((element) => { 
+                element.classList.add("RightColumnForm");
+            });
         }
         else{
             cardBodyElements.forEach((element) => { 
@@ -434,6 +438,9 @@
             });
             linksitemsElements.forEach((element) => { 
                 element.style.display = "none";
+            });
+            formaddlinkElements.forEach((element) => { 
+                element.classList.remove("RightColumnForm");
             });
         }
     }
